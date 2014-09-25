@@ -2,10 +2,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.zhaogangtao</groupId>
-    <artifactId>ss4</artifactId>
+    <artifactId>bilvyou</artifactId>
     <packaging>war</packaging>
     <version>0.1</version>
-    <name>spring4 hibernate4 Maven Webapp</name>
+    <name>BiLvYou Webapp</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -212,7 +212,7 @@
     </dependencies>
 
     <build>
-        <finalName>spring4-hibernate4</finalName>
+        <finalName>bilvyou</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
