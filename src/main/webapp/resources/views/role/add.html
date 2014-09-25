@@ -1,0 +1,66 @@
+<div>
+    <div class="breadcrumbs" id="breadcrumbs">
+
+        <ul class="breadcrumb">
+            <li><i class="icon-home home-icon"></i> <a
+                href="/fenxiao/index.php?s=/Index/index.html">主页</a></li>
+            <li class="active">添加用户</li>
+        </ul>
+        <!-- .breadcrumb -->
+    </div>
+
+    <div class="page-content">
+
+
+        <div class="row">
+            <div class="col-xs-12">
+
+
+                <form class="form-horizontal" name="roleAdd.formObj">
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="name"> 角色名称  </label>
+
+                        <div class="col-sm-9">
+                            <input type="text" data-ng-model="roleAdd.formData.name" data-ng-required="true" id="name" name="name" placeholder="角色名称 
+                                class="col-xs-10 col-sm-5">
+                        </div>
+                    </div>
+                    
+                    <div class="space-4"></div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="comment"> 备注 </label>
+
+                        <div class="col-sm-9">
+                            <textarea class="col-xs-10 col-sm-5" data-ng-model="roleAdd.formData.comment"
+                                id="comment" name="comment"
+                                placeholder="备注"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="space-4"></div>
+
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button class="btn btn-info" data-ng-class="{'disabled': roleAdd.formObj.$invalid}" type="button" data-ng-click="submitRole()">
+                                <i class="icon-ok bigger-110"></i> 提交
+                            </button>
+
+                            &nbsp; &nbsp; &nbsp;
+                            <button class="btn" type="reset">
+                                <i class="icon-undo bigger-110"></i> 重置
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.page-content -->
+</div>

@@ -1,0 +1,115 @@
+<div>
+    <div class="breadcrumbs" id="breadcrumbs">
+
+        <ul class="breadcrumb">
+            <li><i class="icon-home home-icon"></i> <a
+                href="/fenxiao/index.php?s=/Index/index.html">主页</a></li>
+            <li class="active">添加用户</li>
+        </ul>
+        <!-- .breadcrumb -->
+    </div>
+
+    <div class="page-content">
+
+
+        <div class="row">
+            <div class="col-xs-12">
+
+
+                <form class="form-horizontal" name="userAdd.formObj">
+
+                    <div class="form-group">
+                        <label
+                            class="col-sm-3 control-label no-padding-right"
+                            for="username"> 用户名 </label>
+
+                        <div class="col-sm-9">
+                            <input type="text" id="username" data-ng-required="true" data-ng-model="userAdd.formData.username"
+                                name="username" placeholder="用户名"
+                                class="col-xs-10 col-sm-5">
+                        </div>
+                    </div>
+
+                    <div class="space-4"></div>
+
+                    <div class="form-group">
+                        <label
+                            class="col-sm-3 control-label no-padding-right"
+                            for="password"> 密码 </label>
+
+                        <div class="col-sm-9">
+                            <input type="password" id="password" data-ng-required="true" data-ng-model="userAdd.formData.password"
+                                name="password" placeholder="密码"
+                                class="col-xs-10 col-sm-5">
+                        </div>
+                    </div>
+
+                    <div class="space-4"></div>
+
+                    <div class="form-group" data-ng-class="{'has-error': userAdd.formData.password != userAdd.formData.repassword}">
+                        <label
+                            class="col-sm-3 control-label no-padding-right"
+                            for="repassword"> 确认密码 </label>
+
+                        <div class="col-sm-9">
+                            <input type="password" id="repassword" data-ng-model="userAdd.formData.repassword" data-ng-required="true"
+                                name="repassword" placeholder="确认密码"
+                                class="col-xs-10 col-sm-5">
+                        </div>
+                    </div>
+
+                    <div class="space-4"></div>
+
+                    <div class="form-group">
+                        <label
+                            class="col-sm-3 control-label no-padding-right"
+                            for="role_id"> 角色 </label>
+
+                        <div class="col-sm-9">
+
+                            <select name="role_id" id="role_id" data-ng-model="userAdd.formData.role.id" data-ng-required="true"
+                                class="col-xs-10 col-sm-5">
+                                <option data-ng-repeat="role in userAdd.allRoles" value="{{role.id}}">{{role.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="space-4"></div>
+
+                    <div class="form-group">
+                        <label
+                            class="col-sm-3 control-label no-padding-right"
+                            for="remark"> 备注 </label>
+
+                        <div class="col-sm-9">
+                            <textarea class="col-xs-10 col-sm-5"
+                                id="remark" name="remark"
+                                placeholder="备注"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="space-4"></div>
+
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button class="btn btn-info" data-ng-class="{'disabled': userAdd.formObj.$invalid || userAdd.formData.password != userAdd.formData.repassword}" type="button" data-ng-click="submitUser()">
+                                <i class="icon-ok bigger-110"></i> 提交
+                            </button>
+
+                            &nbsp; &nbsp; &nbsp;
+                            <button class="btn" type="reset">
+                                <i class="icon-undo bigger-110"></i> 重置
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.page-content -->
+</div>

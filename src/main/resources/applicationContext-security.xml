@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <global-method-security pre-post-annotations="enabled">
+        <expression-handler ref="expressionHandler" />
+    </global-method-security>
+
+    <http realm="Contacts Realm">
+        <intercept-url pattern="/resources/**"
+            access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/login/**"
+            access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/**" access="ROLE_USER" />
+
+        <form-login login-page="/login/index" 
+            username-parameter="username" password-parameter="password"
+            login-processing-url="/login/signIn" default-target-url="/main"
+            authentication-success-handler-ref="loginSuccessHandler"
+            authentication-failure-url="/login/index?error" />
+        <http-basic />
+        <logout logout-success-url="/logout-success.jsp" />
+        <remember-me />
+        <headers />
+        <!--  csrf /-->
+        <!-- custom-filter ref="switchUserProcessingFilter" position="SWITCH_USER_FILTER" 
+            / -->
+    </http>
+
+    <b:bean id="passwordEncoder"
+        class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"></b:bean>
+
+
+    <authentication-manager>
+        <authentication-provider
+            user-service-ref='customUserDetailsService'>
+            <password-encoder ref="passwordEncoder"></password-encoder>
+        </authentication-provider>
+    </authentication-manager>
+
+    <b:bean
+        class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <b:property name="messageConverters">
+            <b:list>
+                <b:ref bean="jsonHttpMessageConverter" />
+            </b:list>
+        </b:property>
+    </b:bean>
+    <b:bean id="jsonHttpMessageConverter"
+        class="org.springframework.http.converter.json.GsonHttpMessageConverter">
+        <b:property name="supportedMediaTypes">
+            <b:list>
+                <b:value>application/json;charset=UTF-8</b:value>
+            </b:list>
+        </b:property>
+    </b:bean>
+
+</b:beans>
