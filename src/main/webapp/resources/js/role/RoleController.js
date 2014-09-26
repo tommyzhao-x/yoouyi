@@ -1,7 +1,7 @@
 angular.module('travelRole').controller('RoleController', ['$scope', '$http', function ($scope, $http) {
     
     $scope.role = {
-            'api': '/ss4/api/role'
+            'api': 'api/role'
     };
     
     $scope.rolePage = {

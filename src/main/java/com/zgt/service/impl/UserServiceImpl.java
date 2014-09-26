@@ -11,7 +11,7 @@ import com.zgt.dao.UserDAO;
 import com.zgt.model.UserPO;
 import com.zgt.service.UserService;
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
     private UserDAO userDAO;
@@ -34,6 +34,9 @@ public class UserServiceImpl implements UserService {
     public boolean addUser(UserPO user) {
         
         user.setPassword(passwordEncoder.encodePassword(user.getPassword(), null));
+        user.setCreatedDate(System.currentTimeMillis());
+        user.setModifiedDate(System.currentTimeMillis());
+        
         return userDAO.saveUser(user);
     }
 

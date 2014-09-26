@@ -17,8 +17,7 @@ public class RoleDAOTest {
 
     @BeforeClass
     public static void setUp() {
-        ApplicationContext acts = new ClassPathXmlApplicationContext(
-                "applicationContext-config.xml");
+        ApplicationContext acts = new ClassPathXmlApplicationContext("classpath:/*.xml");
 
         roleDAO = (RoleDAO) acts.getBean("roleDAO");
     }

@@ -1,8 +1,5 @@
 package com.zgt.model;
 
-import java.util.Date;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,6 +11,7 @@ import javax.persistence.Table;
 @Table(name = "t_user")
 public class UserPO {
     private int id;
+    
     private String username;
     private String password;
     private RolePO role;

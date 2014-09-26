@@ -2,7 +2,7 @@
     angular.module('travelUser').controller('UserController', ['$scope', '$http', function ($scope, $http) {
         
         $scope.user = {
-                'api': '/ss4/api/user'
+                'api': 'api/user'
         };
         
 

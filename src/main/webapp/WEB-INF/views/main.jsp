@@ -254,16 +254,9 @@
 <script src="resources/assets/js/excanvas.min.js"></script>
 <![endif]-->
 
-    <script src="resources/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
-    <script src="resources/assets/js/jquery.ui.touch-punch.min.js"></script>
-    <script src="resources/assets/js/jquery.slimscroll.min.js"></script>
-    <script src="resources/assets/js/jquery.easy-pie-chart.min.js"></script>
-    <script src="resources/assets/js/jquery.sparkline.min.js"></script>
-    <script src="resources/assets/js/flot/jquery.flot.min.js"></script>
-    <script src="resources/assets/js/flot/jquery.flot.pie.min.js"></script>
-    <script src="resources/assets/js/flot/jquery.flot.resize.min.js"></script>
 
-    <script src="resources/js/underscore-min.js"></script>
+
+    <script src="resources/js/underscore-1.7.0/underscore-min.js"></script>
 
     <script src="resources/js/angular-1.2.25/angular.min.js"></script>
     <script src="resources/js/angular-1.2.25/angular-route.min.js"></script>

@@ -19,8 +19,7 @@ public class UserDAOTest2 {
 
     @BeforeClass
     public static void setUp() {
-        ApplicationContext acts = new ClassPathXmlApplicationContext(
-                "applicationContext-config.xml");
+        ApplicationContext acts = new ClassPathXmlApplicationContext("classpath:/*.xml");
 
         userDAO = (UserDAO) acts.getBean("userDAO");
         roleDAO = (RoleDAO) acts.getBean("roleDAO");
@@ -42,7 +41,7 @@ public class UserDAOTest2 {
 
     @Test
     public void testGetUserByName() {
-        String userName = "zhaogangtao";
+        String userName = "admin";
         UserPO user = userDAO.getUserByName(userName);
         if (user != null) {
             Assert.assertEquals(userName, user.getUsername());

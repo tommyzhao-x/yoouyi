@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
@@ -28,10 +29,12 @@ public class UserDAO {
     }
 
     public UserPO getUserByName(String userName) {
+        
         Query query = sessionFactory.getCurrentSession().createQuery(
                 "from UserPO user where user.username=:userName");
 
-        return (UserPO) query.setString("userName", userName).uniqueResult();
+        UserPO user = (UserPO) query.setString("userName", userName).uniqueResult();
+        return user;
     }
 
     public boolean saveUser(UserPO user) {

@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import com.zgt.model.RolePO;
 import com.zgt.model.UserPO;
 import com.zgt.service.UserService;
 
@@ -37,15 +38,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private Collection<GrantedAuthority> obtionGrantedAuthorities(UserPO user) {
         Set<GrantedAuthority> authSet = new HashSet<GrantedAuthority>();
-        // Set<Roles> roles = user.getRoles();
-        //
-        // for(Roles role : roles) {
-        // Set<Resources> tempRes = role.getResources();
-        // for(Resources res : tempRes) {
-        // authSet.add(new GrantedAuthorityImpl(res.getName()));
-        // s }
-        // }
-        authSet.add(new GrantedAuthorityImpl("ROLE_USER"));
+        RolePO role = user.getRole();
+
+        authSet.add(new GrantedAuthorityImpl(role.getName()));
         return authSet;
     }
 

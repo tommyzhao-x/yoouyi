@@ -2,7 +2,7 @@
     angular.module('travelRole').controller('RoleAddController', ['$scope', '$http', function ($scope, $http) {
         
         $scope.roleAdd = {
-                api: '/ss4/api/role'
+                api: 'api/role'
         };
         
         $scope.submitRole = function () {
