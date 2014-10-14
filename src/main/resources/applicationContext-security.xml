@@ -11,6 +11,7 @@
     <http realm="Contacts Realm">
         <intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <intercept-url pattern="/index/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/search/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <intercept-url pattern="/login/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <intercept-url pattern="/**" access="ROLE_USER" />
 
