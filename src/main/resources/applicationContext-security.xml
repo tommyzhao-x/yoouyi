@@ -9,10 +9,9 @@
     </global-method-security>
 
     <http realm="Contacts Realm">
-        <intercept-url pattern="/resources/**"
-            access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <intercept-url pattern="/login/**"
-            access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/index/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/login/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <intercept-url pattern="/**" access="ROLE_USER" />
 
         <form-login login-page="/login/index" 
@@ -21,7 +20,7 @@
             authentication-success-handler-ref="loginSuccessHandler"
             authentication-failure-url="/login/index?error" />
         <http-basic />
-        <logout logout-success-url="/logout-success.jsp" />
+        <logout logout-url="/login/signOut" logout-success-url="/logout-success.jsp" />
         <remember-me />
         <headers />
         <!--  csrf /-->

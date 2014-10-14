@@ -90,8 +90,7 @@
                                     <i class="icon-user"></i> 修改密码
                             </a></li>
                             <li class="divider"></li>
-                            <li><a
-                                href="/fenxiao/index.php?s=/Public/logout.html">
+                            <li><a href="login/signOut">
                                     <i class="icon-off"></i> 退出
                             </a></li>
                         </ul></li>
@@ -145,14 +144,12 @@
                         <ul class="submenu">
                             <li>
                                 <a data-ng-href="role/add">
-                                    <i class="icon-double-angle-right"></i>
-                                    增加角色
+                                    <i class="icon-double-angle-right"></i> 增加角色
                                 </a>
                             </li>
                             <li>
                                 <a data-ng-href="role">
-                                    <i class="icon-double-angle-right"></i>
-                                    角色用户
+                                    <i class="icon-double-angle-right"></i>  角色用户
                                 </a>
                             </li>
 
@@ -169,14 +166,12 @@
                         <ul class="submenu">
                             <li>
                                 <a data-ng-href="user/add">
-                                    <i class="icon-double-angle-right"></i>
-                                    增加用户
+                                    <i class="icon-double-angle-right"></i> 增加用户
                                 </a>
                             </li>
                             <li>
                                 <a data-ng-href="user">
-                                    <i class="icon-double-angle-right"></i>
-                                    管理用户
+                                    <i class="icon-double-angle-right"></i> 管理用户
                                 </a>
                             </li>
 
@@ -192,13 +187,11 @@
                         <ul class="submenu">
                             <li><a
                                 href="/fenxiao/index.php?s=/Announce/add.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    增加公告
+                                    <i class="icon-double-angle-right"></i>  增加公告
                             </a></li>
                             <li><a
                                 href="/fenxiao/index.php?s=/Announce/index.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    管理公告
+                                    <i class="icon-double-angle-right"></i> 管理公告
                             </a></li>
 
 
