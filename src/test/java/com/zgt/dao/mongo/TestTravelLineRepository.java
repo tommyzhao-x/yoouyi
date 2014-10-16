@@ -1,5 +1,8 @@
 package com.zgt.dao.mongo;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -20,10 +23,20 @@ public class TestTravelLineRepository {
     
     @Test
     public void testInsert() {
+        
         TravelLinePO travelLinePO = new TravelLinePO();
-        travelLinePO.setId(2);
         travelLinePO.setTitle("tuniu");
+        travelLinePO.setCreateDate(new Date());
         travelLineRepository.insert(travelLinePO);
     }
 
+    @Test
+    public void testGetTravelLine() {
+        ArrayList<TravelLinePO> travelLinePOs = (ArrayList<TravelLinePO>) travelLineRepository.getTravelLine();
+        
+        for (TravelLinePO travelLinePO : travelLinePOs) {
+            System.out.println(travelLinePO.getId());
+        }
+    }
+    
 }

@@ -36,7 +36,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan">
 			<list>
-				<value>com.zgt</value>
+				<value>com.zgt.model</value>
 			</list>
 		</property>
 

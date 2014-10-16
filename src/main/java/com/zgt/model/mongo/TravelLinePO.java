@@ -1,22 +1,28 @@
 package com.zgt.model.mongo;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.bson.types.ObjectId;
+
 @Entity
 public class TravelLinePO {
 
-    private int id;
+    private ObjectId id;
     private String title;
+    
+    private Date createDate;
 
     @Id
     @GeneratedValue
-    public int getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -26,6 +32,14 @@ public class TravelLinePO {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
 }

@@ -5,11 +5,12 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.zgt.model.mongo.TravelLinePO;
 
-@Repository
+@Component("travelLineRepository")
 public class TravelLineRepository {
 
     private MongoTemplate mongoTemplate;
@@ -27,7 +28,8 @@ public class TravelLineRepository {
         mongoTemplate.insert(travelLinePO);
     }
     
-    public List<TravelLinePO> getTravelLineById() {
+    
+    public List<TravelLinePO> getTravelLine() {
         return mongoTemplate.findAll(TravelLinePO.class);
     }
 
