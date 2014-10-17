@@ -1,4 +1,4 @@
-package com.zgt.action.api;
+package com.zgt.action.api.admin;
 
 import java.util.HashMap;
 import java.util.List;
