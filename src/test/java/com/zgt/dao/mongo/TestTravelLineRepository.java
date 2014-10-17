@@ -1,42 +1,40 @@
 package com.zgt.dao.mongo;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.zgt.model.mongo.TravelLinePO;
+import com.zgt.model.mongo.TravelInfo;
 
 public class TestTravelLineRepository {
     
-    private static TravelLineRepository travelLineRepository;
+    private static TravelLineDAO travelLineDAO;
     
     @BeforeClass
     public static void setUp() {
         ApplicationContext acts = new ClassPathXmlApplicationContext("classpath:/*.xml");
 
-        travelLineRepository = (TravelLineRepository) acts.getBean("travelLineRepository");
+        travelLineDAO = (TravelLineDAO) acts.getBean("travelLineDAO");
     }
     
     @Test
     public void testInsert() {
         
-        TravelLinePO travelLinePO = new TravelLinePO();
+        TravelInfo travelLinePO = new TravelInfo();
         travelLinePO.setTitle("tuniu");
-        travelLinePO.setCreateDate(new Date());
-        travelLineRepository.insert(travelLinePO);
+        travelLineDAO.insert(travelLinePO);
     }
 
     @Test
     public void testGetTravelLine() {
-        ArrayList<TravelLinePO> travelLinePOs = (ArrayList<TravelLinePO>) travelLineRepository.getTravelLine();
-        
-        for (TravelLinePO travelLinePO : travelLinePOs) {
-            System.out.println(travelLinePO.getId());
-        }
+        ArrayList<TravelInfo> travelLinePOs = (ArrayList<TravelInfo>) travelLineDAO.getTravelLine(null, "乔家大院", null);
+        System.out.println(travelLinePOs.size());
+//        for (TravelInfo travelLinePO : travelLinePOs) {
+//            System.out.println(travelLinePO.getId());
+//        }
     }
     
 }

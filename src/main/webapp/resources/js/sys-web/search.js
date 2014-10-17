@@ -1,0 +1,3 @@
+$(function() {
+    $('#travelSearchBtn').click(function() {})
+})

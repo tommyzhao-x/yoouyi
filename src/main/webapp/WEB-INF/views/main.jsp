@@ -254,20 +254,20 @@
     <script src="resources/js/angular-1.2.25/angular.min.js"></script>
     <script src="resources/js/angular-1.2.25/angular-route.min.js"></script>
     
-    <script src="resources/js/app.js"></script>
-    <script src="resources/js/common/ui-bootstrap-tpls-0.11.0.js"></script>
-    <script src="resources/js/common/TravelController.js"></script>
+    <script src="resources/js/sys-admin/app.js"></script>
+    <script src="resources/js/sys-admin/common/ui-bootstrap-tpls-0.11.0.js"></script>
+    <script src="resources/js/sys-admin/common/TravelController.js"></script>
     
-    <script src="resources/js/home/home.js"></script>
-    <script src="resources/js/home/HomeController.js"></script>
+    <script src="resources/js/sys-admin/home/home.js"></script>
+    <script src="resources/js/sys-admin/home/HomeController.js"></script>
     
-    <script src="resources/js/role/role.js"></script>
-    <script src="resources/js/role/RoleController.js"></script>
-    <script src="resources/js/role/RoleAddController.js"></script>
+    <script src="resources/js/sys-admin/role/role.js"></script>
+    <script src="resources/js/sys-admin/role/RoleController.js"></script>
+    <script src="resources/js/sys-admin/role/RoleAddController.js"></script>
     
-    <script src="resources/js/user/user.js"></script>
-    <script src="resources/js/user/UserController.js"></script>
-    <script src="resources/js/user/UserAddController.js"></script>
+    <script src="resources/js/sys-admin/user/user.js"></script>
+    <script src="resources/js/sys-admin/user/UserController.js"></script>
+    <script src="resources/js/sys-admin/user/UserAddController.js"></script>
 
     <!-- ace scripts -->
     <script src="resources/assets/js/ace-elements.min.js"></script>
@@ -296,6 +296,6 @@
 
 </script>
 
-    <script src="resources/js/commonMenu.js"></script>
+    <script src="resources/js/sys-admin/commonMenu.js"></script>
 
 </body>
