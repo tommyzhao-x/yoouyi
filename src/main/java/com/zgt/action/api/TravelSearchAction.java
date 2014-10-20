@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,32 +13,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zgt.dao.mongo.TravelLineDAO;
+import com.zgt.service.travel.TravelService;
 
 @Controller
 @RequestMapping("/api/travelSearch")
 public class TravelSearchAction {
 
-    private TravelLineDAO travelLineDAO;
+    private TravelService travelService;
 
-    public TravelLineDAO getTravelLineDAO() {
-        return travelLineDAO;
+    public TravelService getTravelService() {
+        return travelService;
     }
 
     @Resource
-    public void setTravelLineDAO(TravelLineDAO travelLineDAO) {
-        this.travelLineDAO = travelLineDAO;
+    public void setTravelService(TravelService travelService) {
+        this.travelService = travelService;
     }
-    
-    
+
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public Map<String, Object> index(@RequestParam("keyWord") String keyWord) {
+    public Map<String, Object> index(@RequestParam("keyWord") String keyWord, HttpServletRequest request) {
 
+        Integer pageNum = new Integer(request.getParameter("pageNum"));
+        
         Map<String, Object> result = new HashMap<String, Object>();
 
-        result.put("lines", travelLineDAO.getTravelLine("上海", keyWord, null));
+        result.put("lines", travelService.getAll(pageNum, "上海", keyWord, null));
 
         return result;
     }
-
 }

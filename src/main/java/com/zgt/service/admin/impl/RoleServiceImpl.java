@@ -1,4 +1,4 @@
-package com.zgt.service.impl;
+package com.zgt.service.admin.impl;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.zgt.dao.RoleDAO;
+import com.zgt.dao.admin.RoleDAO;
 import com.zgt.model.RolePO;
-import com.zgt.service.RoleService;
+import com.zgt.service.admin.RoleService;
 
 @Service("roleService")
 public class RoleServiceImpl implements RoleService {

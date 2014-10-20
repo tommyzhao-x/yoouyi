@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 import com.zgt.model.RolePO;
 import com.zgt.model.UserPO;
-import com.zgt.service.UserService;
+import com.zgt.service.admin.UserService;
 
 @Component
 public class CustomUserDetailsService implements UserDetailsService {

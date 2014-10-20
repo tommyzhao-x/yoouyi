@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zgt.common.MessageDTO;
 import com.zgt.model.UserPO;
-import com.zgt.service.UserService;
+import com.zgt.service.admin.UserService;
 
 @Controller
-@RequestMapping("/api/user")
+@RequestMapping("/admin/api/user")
 public class UserAction {
     
     private UserService userService;

@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.zgt.common.Constants;
+import com.zgt.dao.admin.RoleDAO;
 import com.zgt.model.RolePO;
 
 public class RoleDAOTest {

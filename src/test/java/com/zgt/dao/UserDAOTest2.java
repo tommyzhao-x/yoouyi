@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.zgt.dao.admin.RoleDAO;
+import com.zgt.dao.admin.UserDAO;
 import com.zgt.model.RolePO;
 import com.zgt.model.UserPO;
 

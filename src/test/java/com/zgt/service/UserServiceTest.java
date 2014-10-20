@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.zgt.model.UserPO;
+import com.zgt.service.admin.UserService;
 
 public class UserServiceTest {
 

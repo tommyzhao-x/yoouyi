@@ -1,4 +1,4 @@
-package com.zgt.dao;
+package com.zgt.dao.admin;
 
 import java.util.List;
 

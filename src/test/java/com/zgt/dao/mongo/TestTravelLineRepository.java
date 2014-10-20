@@ -30,7 +30,7 @@ public class TestTravelLineRepository {
 
     @Test
     public void testGetTravelLine() {
-        ArrayList<TravelInfo> travelLinePOs = (ArrayList<TravelInfo>) travelLineDAO.getTravelLine(null, "乔家大院", null);
+        ArrayList<TravelInfo> travelLinePOs = (ArrayList<TravelInfo>) travelLineDAO.getTravelLine(null, null, "乔家大院", null);
         System.out.println(travelLinePOs.size());
 //        for (TravelInfo travelLinePO : travelLinePOs) {
 //            System.out.println(travelLinePO.getId());

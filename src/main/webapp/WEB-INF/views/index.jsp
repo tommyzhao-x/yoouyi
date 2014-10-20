@@ -1,4 +1,5 @@
-<%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8"%>
+<%@ page language="java" pageEncoding="UTF-8"
+    contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en" data-ng-app="travelWeb">
@@ -11,6 +12,8 @@
 <meta name="author" content="">
 <title>旅游比较</title>
 <link href="resources/css/bootstrap.css" rel="stylesheet">
+
+<script src="resources/js/underscore-1.7.0/underscore-min.js"></script>
 <script src="resources/js/jquery-1.11.1.min.js"></script>
 <script src="resources/js/jsrender.1.0.0-beta/jsrender.js"></script>
 
@@ -52,32 +55,27 @@
 
     <div class="jumbotron">
         <div class="container">
-            <form action="search" method="get">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="input-group">
-                            <input type="text" id="travelKeyWord"
-                                name="keyWord" class="form-control"
-                                value="${requestScope.keyWord} ">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <input type="text" id="travelKeyWord"
+                            name="keyWord" class="form-control"
+                            value="${requestScope.keyWord} ">
 
-                            <div class="input-group-btn">
-                                <button type="button"
-                                    id="travelSearchBtn"
-                                    class="btn btn-info">搜索线路</button>
-                            </div>
+                        <div class="input-group-btn">
+                            <button type="button" id="travelSearchBtn"
+                                class="btn btn-info">搜索线路</button>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-    
-    <div id="travelLines" class="container">
 
-        
-    </div>
+    <div id="travelLines" class="container"></div>
+    <div id="pagination" class="container"></div>
 
-<script id="travelLineTemp" type="text/x-jsrender">
+    <script id="travelLineTemp" type="text/x-jsrender">
         <div class="row">
             <div class="col-md-4">
                 <img src="{{>imageLink}}">
@@ -87,6 +85,20 @@
                 <p>{{>groupsLine}}</p>
             </div>
         </div>
-</script>
+    </script>
+            
+
+    <script id="paginationTemp" type="text/x-jsrender">
+        <ul class="pagination">
+          <li><a href="#">&laquo;</a></li>
+          {{for nums}}
+              <li><a href="#">{{:#index+1}}</a></li>
+		  {{else}}
+			<li><a href="#">No DATA</a></li>
+          {{/for}}
+          <li><a href="#">&raquo;</a></li>
+        </ul>
+    </script>
+
 </body>
 </html>

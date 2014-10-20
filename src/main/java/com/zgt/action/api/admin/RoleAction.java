@@ -16,10 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.zgt.common.MessageDTO;
 import com.zgt.model.RolePO;
-import com.zgt.service.RoleService;
+import com.zgt.service.admin.RoleService;
 
 @Controller
-@RequestMapping("/api/role")
+@RequestMapping("/admin/api/role")
 public class RoleAction {
 
     private RoleService roleService;

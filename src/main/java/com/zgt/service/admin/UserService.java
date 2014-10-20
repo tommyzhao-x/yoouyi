@@ -1,4 +1,4 @@
-package com.zgt.service;
+package com.zgt.service.admin;
 
 import java.util.List;
 

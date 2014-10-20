@@ -1,4 +1,4 @@
-package com.zgt.service.impl;
+package com.zgt.service.admin.impl;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import javax.annotation.Resource;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.zgt.dao.UserDAO;
+import com.zgt.dao.admin.UserDAO;
 import com.zgt.model.UserPO;
-import com.zgt.service.UserService;
+import com.zgt.service.admin.UserService;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
