@@ -69,6 +69,22 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-4">行程天数：</div>
+                <div class="col-md-8" id="travelTimeList"></div>
+
+                <script id="travelTimeTemp" type="text/x-jsrender">
+                    <a class="btn btn-default btn-sm">{{:#data}}</a>
+                </script>
+            </div>
+            <div class="row">
+                <div class="col-md-4">信息平台：</div>
+                <div class="col-md-8" id="platformList"></div>
+
+                <script id="platformTemp" type="text/x-jsrender">
+                    <a class="btn btn-default btn-sm">{{:#data}}</a>
+                </script>
+            </div>
         </div>
     </div>
 
@@ -93,8 +109,8 @@
           <li><a href="#">&laquo;</a></li>
           {{for nums}}
               <li><a href="#">{{:#index+1}}</a></li>
-		  {{else}}
-			<li><a href="#">No DATA</a></li>
+          {{else}}
+              <li><a href="#">No DATA</a></li>
           {{/for}}
           <li><a href="#">&raquo;</a></li>
         </ul>

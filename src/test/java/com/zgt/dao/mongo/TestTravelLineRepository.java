@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.zgt.dao.travel.TravelLineDAO;
 import com.zgt.model.mongo.TravelInfo;
 
 public class TestTravelLineRepository {
@@ -35,6 +36,11 @@ public class TestTravelLineRepository {
 //        for (TravelInfo travelLinePO : travelLinePOs) {
 //            System.out.println(travelLinePO.getId());
 //        }
+    }
+    
+    @Test
+    public void testGetAllTravelTime() {
+        System.out.println(travelLineDAO.getAllTravelTime("乔家大院"));
     }
     
 }

@@ -1,5 +1,6 @@
-package com.zgt.dao.mongo;
+package com.zgt.dao.travel;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -8,9 +9,10 @@ import javax.annotation.Resource;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCollection;
 import com.zgt.common.Constants;
 import com.zgt.model.mongo.TravelInfo;
 
@@ -42,7 +44,7 @@ public class TravelLineDAO {
 
     private Query createQuery(Integer pageNum, String destination) {
         Criteria travelLineCriteria = Criteria.where("destination").is(destination);
-        ;
+        
         Query query = new Query(travelLineCriteria);
         
         if (pageNum != null) {
@@ -55,6 +57,24 @@ public class TravelLineDAO {
     public int count(String destination) {
         Query query = createQuery(null, destination);
         return (int) mongoTemplate.count(query, TravelInfo.class);
+    }
+    
+    public List<String> getAllTravelTime(String destination) {
+        BasicDBObject whereQuery = new BasicDBObject();
+        whereQuery.put("destination", destination);
+        
+        DBCollection query= mongoTemplate.getCollection("travelInfo");
+        List<String> result = query.distinct("port", whereQuery);
+        return result;
+    }
+
+    public List<String> getAllTravelPlatForm(String destination) {
+        BasicDBObject whereQuery = new BasicDBObject();
+        whereQuery.put("destination", destination);
+
+        DBCollection query= mongoTemplate.getCollection("travelInfo");
+        List<String> result = query.distinct("platform", whereQuery);
+        return result;
     }
 
 }
