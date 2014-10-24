@@ -57,16 +57,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="input-group">
-                        <input type="text" id="travelKeyWord"
-                            name="keyWord" class="form-control"
-                            value="${requestScope.keyWord} ">
 
-                        <div class="input-group-btn">
-                            <button type="button" id="travelSearchBtn"
-                                class="btn btn-info">搜索线路</button>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="row">
@@ -97,7 +88,7 @@
                 <img src="{{>imageLink}}">
             </div>
             <div class="col-md-8">
-                <h2>{{>title}}</h2>
+                <h4>{{>title}}</h4>
                 <p>{{>groupsLine}}</p>
             </div>
         </div>
