@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -38,7 +39,7 @@ public class TravelLineDAO {
     public List<TravelInfo> getTravelLine(Integer pageNum, String starting, String destination, Date travelTime) {
         
         Query query = createQuery(pageNum, destination);
-        
+        query.with(new Sort(Sort.Direction.DESC, "price"));
         return mongoTemplate.find(query, TravelInfo.class);  
     }
 

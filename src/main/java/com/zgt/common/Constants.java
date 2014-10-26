@@ -1,7 +1,7 @@
 package com.zgt.common;
 
 public class Constants {
-    
-    public static int PAGE_SIZE=10;
+
+    public static int PAGE_SIZE = 12;
 
 }
