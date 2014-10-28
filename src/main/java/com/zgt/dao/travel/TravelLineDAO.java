@@ -16,6 +16,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.zgt.common.Constants;
 import com.zgt.model.mongo.TravelInfo;
+import com.zgt.model.vo.TravelLineSearchVO;
 
 @Repository("travelLineDAO")
 public class TravelLineDAO {
@@ -36,46 +37,64 @@ public class TravelLineDAO {
     }
     
     
-    public List<TravelInfo> getTravelLine(Integer pageNum, String starting, String destination, Date travelTime) {
+    public List<TravelInfo> getTravelLine(TravelLineSearchVO searchVO) {
         
-        Query query = createQuery(pageNum, destination);
-        query.with(new Sort(Sort.Direction.DESC, "price"));
+        Query query = createQuery(searchVO);
+        
+        if (searchVO.getPageNum() != null) {
+            query.skip((searchVO.getPageNum() - 1 ) * Constants.PAGE_SIZE);
+            query.limit(Constants.PAGE_SIZE);
+        }
+        
+        if (searchVO.getOrder()) {
+            query.with(new Sort(Sort.Direction.DESC, "price"));
+        } else {
+            query.with(new Sort(Sort.Direction.ASC, "price"));
+        }
+        
         return mongoTemplate.find(query, TravelInfo.class);  
     }
 
-    private Query createQuery(Integer pageNum, String destination) {
-        Criteria travelLineCriteria = Criteria.where("destination").is(destination);
+    private Query createQuery(TravelLineSearchVO searchVO) {
+        Criteria travelLineCriteria = Criteria.where("starting").is(searchVO.getStarting())
+                .where("destination").is(searchVO.getDestination());
+        
+        if (searchVO.getPlatform() != Constants.IGNORE_VALUE) {
+            travelLineCriteria.where("platform").is(searchVO.getPlatform());
+        }
         
         Query query = new Query(travelLineCriteria);
         
-        if (pageNum != null) {
-            query.skip((pageNum - 1 ) * Constants.PAGE_SIZE);
-            query.limit(Constants.PAGE_SIZE);
-        }
         return query;
     }
 
-    public int count(String destination) {
-        Query query = createQuery(null, destination);
+    public int count(TravelLineSearchVO searchVO) {
+        Query query = createQuery(searchVO);
         return (int) mongoTemplate.count(query, TravelInfo.class);
     }
     
-    public List<String> getAllTravelTime(String destination) {
-        BasicDBObject whereQuery = new BasicDBObject();
-        whereQuery.put("destination", destination);
+    public List<String> getAllTravelTime(String starting, String destination, Date itinerary) {
+        BasicDBObject whereQuery = createMetaDateQuery(starting, destination, itinerary);
         
         DBCollection query= mongoTemplate.getCollection("travelInfo");
         List<String> result = query.distinct("port", whereQuery);
         return result;
     }
 
-    public List<String> getAllTravelPlatForm(String destination) {
-        BasicDBObject whereQuery = new BasicDBObject();
-        whereQuery.put("destination", destination);
+    public List<String> getAllTravelPlatForm(String starting, String destination, Date itinerary) {
+        BasicDBObject whereQuery = createMetaDateQuery(starting, destination, itinerary);
 
         DBCollection query= mongoTemplate.getCollection("travelInfo");
         List<String> result = query.distinct("platform", whereQuery);
         return result;
+    }
+
+    private BasicDBObject createMetaDateQuery(String starting, String destination, Date itinerary) {
+        BasicDBObject whereQuery = new BasicDBObject();
+        whereQuery.put("starting", starting);
+        whereQuery.put("destination", destination);
+        
+        return whereQuery;
     }
 
 }

@@ -1,6 +1,6 @@
-angular.module('travelWebSearch', [ 'ngRoute' ]).config(
+angular.module('travelWebSearch', [ 'ngRoute', 'ui.bootstrap' ]).config(
     function($routeProvider) {
-        $routeProvider.when('/search', {
+        $routeProvider.when('/index', {
             templateUrl : 'resources/views/sys-web/search/index.html',
             controller : 'SearchController'
         })

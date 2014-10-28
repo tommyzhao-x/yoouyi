@@ -4,13 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import com.zgt.common.Pagination;
+import com.zgt.model.vo.TravelLineSearchVO;
 
 public interface TravelService {
-    public Pagination getAll(Integer pageNum, String starting,
-            String destination, Date travelTime);
+    public Pagination getAll(TravelLineSearchVO searchVO);
 
-    public List<String> getAllTravelTimes(String starting, String keyWord,
-                                          Date travelTime);
+    public List<String> getAllTravelTimes(String starting, String keyWord, Date departure);
 
-    public List<String> getAllTravelPlatforms(String starting, String keyWord, Date travelTime);
+    public List<String> getAllTravelPlatforms(String starting, String keyWord, Date departure);
 }

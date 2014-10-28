@@ -2,7 +2,7 @@
          contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en" data-ng-app="travelWeb">
+<html lang="en" data-ng-app="travelWeb" data-ng-controller="SearchController">
 <head>
     <base href="http://${header.host}${pageContext.request.contextPath}/" />
     <meta charset="utf-8">
@@ -13,10 +13,24 @@
     <link href="resources/css/bootstrap.css" rel="stylesheet">
 
     <script src="resources/js/underscore-1.7.0/underscore-min.js"></script>
+
+    <script src="resources/js/angular-1.2.25/angular.min.js"></script>
+    <script src="resources/js/angular-1.2.25/angular-route.min.js"></script>
+    <script src="resources/js/ui-bootstrap-0.11.2/ui-bootstrap-tpls-0.11.2.min.js"></script>
+
+    <script src="resources/js/sys-web/app.js"></script>
+
+    <script src="resources/js/sys-web/search/search.js"></script>
+    <script src="resources/js/sys-web/search/SearchController.js"></script>
+
+
+
+
+
     <script src="resources/js/jquery-1.11.1.min.js"></script>
     <script src="resources/js/jsrender.1.0.0-beta/jsrender.js"></script>
 
-    <script src="resources/js/sys-web/search.js"></script>
+    <!--script src="resources/js/sys-web/search.js"></script-->
 
     <link rel="stylesheet/less" type="text/css" href="resources/css/lvyou.less" />
     <script src="resources/js/less-v2.0.0-b1/less.min.js"></script>
@@ -40,12 +54,11 @@
             </div>
             <div class="col-md-10 ly-right">
                 <div class="input-group">
-                    <input type="text" id="travelKeyWord"
-                           name="keyWord" class="form-control"
-                           value="${requestScope.keyWord} ">
+                    <input type="text" id="travelDestination" data-ng-model="searchModel.destination"
+                           name="destination" class="form-control" value="${requestScope.destination} ">
 
                     <div class="input-group-btn">
-                        <button type="button" id="travelSearchBtn" class="btn btn-primary">搜索线路</button>
+                        <button type="button" data-ng-click="searchTravel()" id="travelSearchBtn" class="btn btn-primary">搜索线路</button>
                     </div>
                 </div>
             </div>
@@ -120,8 +133,9 @@
                         <div class="col-md-2 ly-meta-data">
                             行程天数：
                         </div>
-                        <div class="col-md-10" id="travelTimeList">
-                            <span class="label label-primary">不限</span>
+                        <div class="col-md-10" id="itineraryList">
+                            <span class="label {{ travelPage.selectedItinerary == itinerary ? 'label-primary' : 'label-default' }}"
+                                  data-ng-click="selectMetaData({itinerary: itinerary})" data-ng-repeat="itinerary in travelPage.itineraryList">{{itinerary}}</span>
                         </div>
                     </div>
                     <div class="row">
@@ -129,7 +143,8 @@
                             数据平台：
                         </div>
                         <div class="col-md-10" id="platformList">
-                            <span class="label label-primary">不限</span>
+                            <span class="label {{ travelPage.selectedPlatform == platform ? 'label-primary' : 'label-default' }}"
+                                  data-ng-click="selectMetaData({platform: platform})" data-ng-repeat="platform in travelPage.platformList">{{platform}}</span>
                         </div>
                     </div>
                     <div class="row">
@@ -137,8 +152,8 @@
                             价格排序：
                         </div>
                         <div class="col-md-10">
-                            <span class="label label-primary">升序</span>
-                            <span class="label label-default">降序</span>
+                            <span class="label {{ travelPage.selectedOrder == 0 ? 'label-primary' : 'label-default' }}" data-ng-click="selectMetaData({order: 0})" >升序</span>
+                            <span class="label {{ travelPage.selectedOrder == 1 ? 'label-primary' : 'label-default' }}" data-ng-click="selectMetaData({order: 1})" >降序</span>
                         </div>
                     </div>
 
@@ -149,20 +164,18 @@
                 <div id="travelLines" class="panel-body"></div>
             </div>
 
-            <div id="pagination"></div>
+            <div id="paginations">
+                <pagination total-items="travelPage.totalNum" ng-model="travelPage.currentPage" ng-change="pageChanged()" max-size="constants.maxSize"
+                            class="pagination-sm" boundary-links="true" rotate="false" items-per-page="constants.pageSize" first-text="{{constants.firstText}}"
+                            last-text="{{constants.lastText}}" previous-text="{{constants.previousText}}" next-text="{{constants.nextText}}"></pagination>
+
+            </div>
 
         </div>
     </div>
 
 </div>
 
-<script id="travelTimeTemp" type="text/x-jsrender">
-    <span class="label label-default">{{:#data}}</span>
-</script>
-
-<script id="platformTemp" type="text/x-jsrender">
-    <span class="label label-default">{{:#data}}</span>
-</script>
 
 <script id="travelLineTemp" type="text/x-jsrender">
 
@@ -174,7 +187,7 @@
     <div class="col-md-4 ly-line">
         <div class="thumbnail" href="../examples/dashboard/">
             <a href="{{>infoLink}}">
-                <img src="{{>imageLink}}" width="249" height="164" alt="{{>title}}">
+                <img src="{{>imageLink}}" class="ly-line-img" alt="{{>title}}">
             </a>
             <div class="row ly-line-title">
                 <div class="col-md-12">{{>title}}</div>

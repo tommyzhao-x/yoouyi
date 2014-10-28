@@ -27,7 +27,7 @@ $(function() {
             }
         }).done(function(data) {
                 console.log(data);
-            $("#travelTimeList").html($("#travelTimeTemp").render(_.sortBy(data.timeList, function(num){ return Number(num); })));
+            $("#travelTimeList").html($("#travelTimeTemp").render());
             $("#platformList").html($("#platformTemp").render(data.platformList));
         });
     }
