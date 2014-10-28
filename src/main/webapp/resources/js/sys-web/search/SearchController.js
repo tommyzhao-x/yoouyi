@@ -7,7 +7,8 @@
             firstText: '首页',
             lastText: '末页',
             previousText: '上一页',
-            nextText: '下一页'
+            nextText: '下一页',
+            ignoreTest: '不限'
         };
 
         $scope.travel = {
@@ -31,7 +32,9 @@
         }) ();
 
         $scope.selectMetaData = function (metaData) {
-            console.log(metaData);
+
+            $scope.travelPage.currentPage = 1;
+
             if (!_.isUndefined(metaData.itinerary)) {
                 $scope.travelPage.selectedItinerary = metaData.itinerary;
             } else if (!_.isUndefined(metaData.platform)) {
@@ -40,13 +43,7 @@
                 $scope.travelPage.selectedOrder = metaData.order;
             }
             getTravel($scope.travelPage.currentPage);
-        }
-
-        $scope.selectItinerary = function (selectedItinerary) {
-            console.log(selectedItinerary);
-
-            $scope.travelPage.selectedItinerary = selectedItinerary;
-        }
+        };
         
         $scope.searchTravel = function () {
             console.log('search');
@@ -65,8 +62,8 @@
             var params = {
                 starting: '上海',
                 destination : $scope.searchModel.destination,
-                itinerary : $scope.travelPage.selectedItinerary,
-                platform : $scope.travelPage.selectedPlatform,
+                itinerary : $scope.constants.ignoreTest == $scope.travelPage.selectedItinerary ? '': $scope.travelPage.selectedItinerary,
+                platform : $scope.constants.ignoreTest == $scope.travelPage.selectedPlatform ? '': $scope.travelPage.selectedPlatform,
                 order : !!$scope.travelPage.selectedOrder,
                 pageNum : pageNum
             }
@@ -76,9 +73,7 @@
             $http({method: 'post', url: $scope.travel.api, data: params})
                 .success(function(data, status) {
                     $scope.travelPage.totalNum = data.lines.size;
-                    $("#travelLines").html($("#travelLineTemp").render(data.lines.items));
-                    console.log(data, _.range(data.lines.totalPages));
-                    $("#pagination").html($("#paginationTemp").render({nums : _.range(data.lines.totalPages)}));
+                    $scope.travelPage.lines = data.lines.items;
                 })
                 .error(function(data, status) {
                     console.log(data, status);

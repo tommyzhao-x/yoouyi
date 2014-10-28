@@ -161,7 +161,33 @@
             </div>
 
             <div class="panel panel-default">
-                <div id="travelLines" class="panel-body"></div>
+                <div id="travelLines" class="panel-body">
+                    <div class="col-md-12" data-ng-if="!travelPage.lines">
+                        暂无此线路信息！
+                    </div>
+                    <div class="col-md-4 ly-line" data-ng-repeat="line in travelPage.lines">
+                        <div class="thumbnail">
+                            <a href="{{line.infoLink}}">
+                                <img src="{{line.imageLink}}" class="ly-line-img" alt="{{line.title}}">
+                            </a>
+                            <div class="row ly-line-title">
+                                <div class="col-md-12">{{line.title | limitTo:50}}</div>
+                            </div>
+                            <div class="ly-dashed"></div>
+
+                            <div class="row ly-line-info">
+                                <div class="col-md-6 text-left ly-line-price">￥{{line.price}}元</div>
+                                <div class="col-md-6 text-right ly-line-platform">{{line.platform}}</div>
+                            </div>
+                            <div class="row ly-line-info">
+                                <div class="col-md-6 text-left">{{line.port}}天行程</div>
+                                <div class="col-md-6 text-right">
+                                    <i class="glyphicon glyphicon-heart"></i>收藏
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div id="paginations">
@@ -175,53 +201,6 @@
     </div>
 
 </div>
-
-
-<script id="travelLineTemp" type="text/x-jsrender">
-
-
-{{if  #index%3 == 0}}
-<div class="row">
-{{/if}}
-
-    <div class="col-md-4 ly-line">
-        <div class="thumbnail" href="../examples/dashboard/">
-            <a href="{{>infoLink}}">
-                <img src="{{>imageLink}}" class="ly-line-img" alt="{{>title}}">
-            </a>
-            <div class="row ly-line-title">
-                <div class="col-md-12">{{>title}}</div>
-            </div>
-            <div class="ly-dashed"></div>
-
-            <div class="row ly-line-info">
-                <div class="col-md-6 text-left ly-line-price">￥{{>price}}元</div>
-                <div class="col-md-6 text-right ly-line-platform">{{>platform}}</div>
-            </div>
-            <div class="row ly-line-info">
-                <div class="col-md-6 text-left">{{>port}}天行程</div>
-                <div class="col-md-6 text-right">
-                    <i class="glyphicon glyphicon-heart"></i>收藏
-                </div>
-            </div>
-        </div>
-    </div>
-
-{{if #index%3 == 2}}
-</div>
-{{/if}}
-</script>
-<script id="paginationTemp" type="text/x-jsrender">
-        <ul class="pagination">
-          <li><a href="#">&laquo;</a></li>
-          {{for nums}}
-              <li><a href="#">{{:#index+1}}</a></li>
-          {{else}}
-              <li><a href="#">No DATA</a></li>
-          {{/for}}
-          <li><a href="#">&raquo;</a></li>
-        </ul>
-    </script>
 
 <footer class="footer">
     <p class="text-center">Copyright &copy; 2014 游易 版权所有</p>

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -57,10 +58,14 @@ public class TravelLineDAO {
 
     private Query createQuery(TravelLineSearchVO searchVO) {
         Criteria travelLineCriteria = Criteria.where("starting").is(searchVO.getStarting())
-                .where("destination").is(searchVO.getDestination());
+                .and("destination").is(searchVO.getDestination());
         
-        if (searchVO.getPlatform() != Constants.IGNORE_VALUE) {
-            travelLineCriteria.where("platform").is(searchVO.getPlatform());
+        if (StringUtils.isNotBlank(searchVO.getPlatform())) {
+            travelLineCriteria.and("platform").is(searchVO.getPlatform());
+        }
+        
+        if (StringUtils.isNotBlank(searchVO.getItinerary())) {
+            travelLineCriteria.and("port").is(searchVO.getItinerary());
         }
         
         Query query = new Query(travelLineCriteria);
