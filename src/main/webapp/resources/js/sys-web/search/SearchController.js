@@ -1,16 +1,7 @@
 (function() {
-    angular.module('travelWebSearch').controller('SearchController', ['$scope', '$http', '$location', '$routeParams', function ($scope, $http, $location, $routeParams) {
+    angular.module('travelWebSearch').controller('SearchController', ['$scope','$rootScope', '$http', '$location', '$routeParams', function ($scope, $rootScope, $http, $location, $routeParams) {
 
-        $scope.constants = {
-            maxSize: 10,
-            pageSize: 12,
-            firstText: '首页',
-            lastText: '末页',
-            previousText: '上一页',
-            nextText: '下一页',
-            ignoreTest: '不限',
-            baiDuIPAPI: 'http://api.map.baidu.com/location/ip'
-        };
+
 
         $scope.travel = {
             api: 'api/travelSearch',
@@ -29,6 +20,7 @@
         };
         
         (function init() {
+            $scope.parentlog();
             console.log('travelWebSearch', $routeParams);
             // split all search item
            if ($routeParams.searchItems) {
@@ -41,12 +33,13 @@
                    $scope.travelPage.selectedItinerary = searchItems[2];
                    $scope.travelPage.selectedPlatform = searchItems[3];
                    $scope.travelPage.selectedOrder = searchItems[4];
+                   $rootScope.$broadcast('onSearchItems', generateParameters());
                }
                // load page data
-               getTravel($scope.travelPage.currentPage);
-           }
+               getTravel();
 
-            getUserCityByIp();
+               getTravelMetaData();
+           }
             
         }) ();
 
@@ -66,13 +59,9 @@
 
         };
 
-        $scope.searchTravel = function () {
-            console.log('search');
-            getTravel($scope.travelPage.currentPage);
-        };
 
         $scope.pageChanged = function() {
-            getTravel($scope.travelPage.currentPage)
+            getTravel()
         };
 
         function getUserCityByIp() {
@@ -85,17 +74,9 @@
                 $scope.travelPage.selectedItinerary, $scope.travelPage.selectedPlatform, $scope.travelPage.selectedOrder].join('_');
         }
 
-        function  getTravel(pageNum) {
-            var params = {
-                starting: '上海',
-                destination : $scope.travelPage.destination,
-                itinerary : $scope.constants.ignoreTest == $scope.travelPage.selectedItinerary ? '': $scope.travelPage.selectedItinerary,
-                platform : $scope.constants.ignoreTest == $scope.travelPage.selectedPlatform ? '': $scope.travelPage.selectedPlatform,
-                order : !!$scope.travelPage.selectedOrder,
-                pageNum : pageNum
-            }
+        function  getTravel() {
 
-            getTravelMetaData(params);
+            var params = generateParameters();
 
             $http({method: 'post', url: $scope.travel.api, data: params})
                 .success(function(data, status) {
@@ -107,7 +88,10 @@
                 });
         }
 
-        function getTravelMetaData(params) {
+        function getTravelMetaData() {
+
+            var params = generateParameters();
+
             $http({method: 'get', url: $scope.travel.apiMetaData, params: params})
                 .success(function(data, status) {
                     $scope.travelPage.itineraryList = $scope.travel.itineraryList.concat(_.sortBy(data.timeList, function(num){ return Number(num);}));
@@ -116,6 +100,17 @@
                 .error(function(data, status) {
                     console.log(data, status);
                 });
+        }
+
+        function generateParameters () {
+            return {
+                starting: $scope.travelPage.starting,
+                destination : $scope.travelPage.destination,
+                itinerary : $scope.constants.ignoreTest == $scope.travelPage.selectedItinerary ? '': $scope.travelPage.selectedItinerary,
+                platform : $scope.constants.ignoreTest == $scope.travelPage.selectedPlatform ? '': $scope.travelPage.selectedPlatform,
+                order : !!$scope.travelPage.selectedOrder,
+                pageNum : $scope.travelPage.currentPage
+            };
         }
         
         
