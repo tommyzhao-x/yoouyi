@@ -1,5 +1,5 @@
 (function() {
-    angular.module('travelWebSearch').controller('SearchController', ['$scope', '$http', function ($scope, $http) {
+    angular.module('travelWebSearch').controller('SearchController', ['$scope', '$http', '$location', '$routeParams', function ($scope, $http, $location, $routeParams) {
 
         $scope.constants = {
             maxSize: 10,
@@ -8,7 +8,8 @@
             lastText: '末页',
             previousText: '上一页',
             nextText: '下一页',
-            ignoreTest: '不限'
+            ignoreTest: '不限',
+            baiDuIPAPI: 'http://api.map.baidu.com/location/ip'
         };
 
         $scope.travel = {
@@ -28,7 +29,25 @@
         };
         
         (function init() {
-            console.log('travelWebSearch');
+            console.log('travelWebSearch', $routeParams);
+            // split all search item
+           if ($routeParams.searchItems) {
+               var searchItems = $routeParams.searchItems.split('_');
+               console.log(searchItems, _.size(searchItems));
+
+               if (_.size(searchItems) == 5) {
+                   $scope.travelPage.starting = searchItems[0];
+                   $scope.travelPage.destination = searchItems[1];
+                   $scope.travelPage.selectedItinerary = searchItems[2];
+                   $scope.travelPage.selectedPlatform = searchItems[3];
+                   $scope.travelPage.selectedOrder = searchItems[4];
+               }
+               // load page data
+               getTravel($scope.travelPage.currentPage);
+           }
+
+            getUserCityByIp();
+            
         }) ();
 
         $scope.selectMetaData = function (metaData) {
@@ -42,26 +61,34 @@
             } else if (!_.isUndefined(metaData.order)) {
                 $scope.travelPage.selectedOrder = metaData.order;
             }
-            getTravel($scope.travelPage.currentPage);
+
+            $location.path(generateTravelLink());
+
         };
-        
+
         $scope.searchTravel = function () {
             console.log('search');
             getTravel($scope.travelPage.currentPage);
         };
 
-        (function init() {
-//            getUser($scope.userPage.currentPage);
-        }) ();
-
         $scope.pageChanged = function() {
             getTravel($scope.travelPage.currentPage)
         };
 
+        function getUserCityByIp() {
+
+        }
+
+        function generateTravelLink() {
+
+            return 'index/' + [$scope.travelPage.starting, $scope.travelPage.destination,
+                $scope.travelPage.selectedItinerary, $scope.travelPage.selectedPlatform, $scope.travelPage.selectedOrder].join('_');
+        }
+
         function  getTravel(pageNum) {
             var params = {
                 starting: '上海',
-                destination : $scope.searchModel.destination,
+                destination : $scope.travelPage.destination,
                 itinerary : $scope.constants.ignoreTest == $scope.travelPage.selectedItinerary ? '': $scope.travelPage.selectedItinerary,
                 platform : $scope.constants.ignoreTest == $scope.travelPage.selectedPlatform ? '': $scope.travelPage.selectedPlatform,
                 order : !!$scope.travelPage.selectedOrder,
