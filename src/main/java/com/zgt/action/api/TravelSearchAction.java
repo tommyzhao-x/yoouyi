@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.zgt.common.MessageDTO;
-import com.zgt.dao.travel.TravelLineDAO;
-import com.zgt.model.UserPO;
 import com.zgt.model.vo.TravelLineSearchVO;
 import com.zgt.service.travel.TravelService;
 

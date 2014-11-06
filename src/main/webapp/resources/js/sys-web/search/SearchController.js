@@ -33,7 +33,7 @@
                    $scope.travelPage.selectedItinerary = searchItems[2];
                    $scope.travelPage.selectedPlatform = searchItems[3];
                    $scope.travelPage.selectedOrder = searchItems[4];
-                   $rootScope.$broadcast('onSearchItems', generateParameters());
+//                   $rootScope.$broadcast('onSearchItems', generateParameters());
                }
                // load page data
                getTravel();

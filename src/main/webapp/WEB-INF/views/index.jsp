@@ -12,6 +12,7 @@
     <title>旅游比较</title>
     <link href="resources/css/bootstrap.css" rel="stylesheet">
 
+
     <script src="resources/js/underscore-1.7.0/underscore-min.js"></script>
 
     <script src="resources/js/angular-1.2.25/angular.min.js"></script>
@@ -23,8 +24,6 @@
 
     <script src="resources/js/sys-web/search/search.js"></script>
     <script src="resources/js/sys-web/search/SearchController.js"></script>
-
-
 
 
 
@@ -64,6 +63,7 @@
                         <span class="label label-default">广州</span>
                         <span class="label label-default">深圳</span>
                     </div>
+                    <div id="amap-container"></div>
                 </div>
             </div>
             <div class="col-md-10 ly-right">
