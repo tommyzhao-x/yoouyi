@@ -8,9 +8,9 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.zgt.common.Constants;
-import com.zgt.dao.admin.RoleDAO;
-import com.zgt.model.RolePO;
+import com.youyi.common.Constants;
+import com.youyi.dao.admin.RoleDAO;
+import com.youyi.model.RolePO;
 
 public class RoleDAOTest {
 

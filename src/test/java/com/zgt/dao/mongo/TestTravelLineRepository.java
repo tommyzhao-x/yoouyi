@@ -7,8 +7,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.zgt.dao.travel.TravelLineDAO;
-import com.zgt.model.mongo.TravelInfo;
+import com.youyi.dao.travel.TravelLineDAO;
+import com.youyi.model.mongo.TravelInfo;
 
 public class TestTravelLineRepository {
     

@@ -5,8 +5,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.zgt.model.UserPO;
-import com.zgt.service.admin.UserService;
+import com.youyi.model.UserPO;
+import com.youyi.service.admin.UserService;
 
 public class UserServiceTest {
 
