@@ -31,7 +31,7 @@ public class TestTravelLineRepository {
 
     @Test
     public void testGetTravelLine() {
-        ArrayList<TravelInfo> travelLinePOs = (ArrayList<TravelInfo>) travelLineDAO.getTravelLine(null, null, "乔家大院", null);
+        ArrayList<TravelInfo> travelLinePOs = (ArrayList<TravelInfo>) travelLineDAO.getTravelLine(null);
         System.out.println(travelLinePOs.size());
 //        for (TravelInfo travelLinePO : travelLinePOs) {
 //            System.out.println(travelLinePO.getId());
@@ -40,7 +40,7 @@ public class TestTravelLineRepository {
     
     @Test
     public void testGetAllTravelTime() {
-        System.out.println(travelLineDAO.getAllTravelTime("乔家大院"));
+        System.out.println(travelLineDAO.getAllTravelTime(null, null, null));
     }
     
 }

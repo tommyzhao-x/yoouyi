@@ -13,6 +13,7 @@
     <link href="resources/css/bootstrap.css" rel="stylesheet">
 
 
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=T0vh70ZX0xIy8YfDQaBdzCAK"></script>
     <script src="resources/js/underscore-1.7.0/underscore-min.js"></script>
 
     <script src="resources/js/angular-1.2.25/angular.min.js"></script>
