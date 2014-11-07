@@ -58,11 +58,9 @@
                             {{travelWeb.starting}}
                             <i class="caret"></i>
                         </span>
-                    <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <span class="label label-default">北京</span>
-                        <span class="label label-primary">上海</span>
-                        <span class="label label-default">广州</span>
-                        <span class="label label-default">深圳</span>
+                    <div class="dropdown-menu ly-cities" role="menu" aria-labelledby="dropdownMenu1">
+                        <span class="label {{ travelWeb.selectedCity.id == city.id ? 'label-primary' : 'label-default' }}" 
+                        data-ng-click="changeCity(city)" data-ng-repeat="city in constants.cities">{{ city.city }}</span>
                     </div>
                     <div id="amap-container"></div>
                 </div>
