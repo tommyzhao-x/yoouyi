@@ -16,7 +16,7 @@
 
 	<mvc:annotation-driven />
 	<!-- 启动自动扫描该包下所有的Bean(例如@Controller) -->
-	<context:component-scan base-package="com.zgt.action" />
+	<context:component-scan base-package="com.yoouyi.action" />
 
 
 	<!-- 处理静态资源 -->

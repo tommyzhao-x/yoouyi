@@ -15,7 +15,7 @@
         http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
 
 	<context:annotation-config />
-	<context:component-scan base-package="com.zgt" />
+	<context:component-scan base-package="com.yoouyi" />
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
 
@@ -36,7 +36,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan">
 			<list>
-				<value>com.zgt.model</value>
+				<value>com.yoouyi.model</value>
 			</list>
 		</property>
 
@@ -70,7 +70,7 @@
 	</tx:advice>
 
 	<aop:config>
-		<aop:pointcut id="fooServiceOperation" expression="execution(* com.zgt..*(..))" />
+		<aop:pointcut id="fooServiceOperation" expression="execution(* com.yoouyi..*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="fooServiceOperation" />
 	</aop:config>
     
