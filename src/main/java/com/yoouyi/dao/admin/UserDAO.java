@@ -1,0 +1,77 @@
+package com.yoouyi.dao.admin;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.hibernate.Hibernate;
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Component;
+
+import com.yoouyi.common.Constants;
+import com.yoouyi.model.UserPO;
+
+@Component("userDAO")
+public class UserDAO {
+
+    private SessionFactory sessionFactory;
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    @Resource
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    public UserPO getUserByName(String userName) {
+        
+        Query query = sessionFactory.getCurrentSession().createQuery(
+                "from UserPO user where user.username=:userName");
+
+        UserPO user = (UserPO) query.setString("userName", userName).uniqueResult();
+        return user;
+    }
+
+    public boolean saveUser(UserPO user) {
+        sessionFactory.getCurrentSession().persist(user);
+        return true;
+    }
+
+    public int countRolesTotalNum() {
+        String hql = "select count(user.id) from UserPO user";
+        Long result = (Long) sessionFactory.getCurrentSession()
+                .createQuery(hql).uniqueResult();
+        return result.intValue();
+    }
+
+    public List<UserPO> getUsers(Integer pageNum) {
+        String hql = "From UserPO user order by user.id desc";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+        if (pageNum != null) {
+            int startIndex = (pageNum - 1) * Constants.PAGE_SIZE;
+
+            query.setFirstResult(startIndex);
+            query.setMaxResults(Constants.PAGE_SIZE);
+        }
+
+        return query.list();
+    }
+
+    public void updateUserLoginIp(String username, String remoteAddress) {
+        String hql = "update UserPO user set user.lastLoginIP = :lastLoginIP, user.lastLoginDate = :lastLoginDate WHERE user.username = :username";
+        
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString("lastLoginIP", remoteAddress);
+        query.setLong("lastLoginDate", (new Date()).getTime());
+        query.setString("username", username);
+        
+        query.executeUpdate();
+    }
+
+}
