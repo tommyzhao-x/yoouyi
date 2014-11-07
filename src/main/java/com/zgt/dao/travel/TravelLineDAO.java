@@ -47,7 +47,7 @@ public class TravelLineDAO {
             query.limit(Constants.PAGE_SIZE);
         }
         
-        if (searchVO.getOrder()) {
+        if (searchVO.isOrder()) {
             query.with(new Sort(Sort.Direction.DESC, "price"));
         } else {
             query.with(new Sort(Sort.Direction.ASC, "price"));
