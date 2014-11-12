@@ -2,8 +2,8 @@
     angular.module('travelUser').controller('UserAddController', ['$scope', '$http', function ($scope, $http) {
         
         $scope.userAdd = {
-                api: 'api/user',
-                allRoleApi: 'api/role/all'
+                api: 'admin/api/user',
+                allRoleApi: 'admin/api/role/all'
         };
         
         (function init() {

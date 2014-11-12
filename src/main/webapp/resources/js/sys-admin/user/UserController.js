@@ -2,7 +2,7 @@
     angular.module('travelUser').controller('UserController', ['$scope', '$http', function ($scope, $http) {
         
         $scope.user = {
-                'api': 'api/user'
+                'api': 'admin/api/user'
         };
         
 
