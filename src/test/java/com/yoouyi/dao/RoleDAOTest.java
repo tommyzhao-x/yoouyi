@@ -2,6 +2,7 @@ package com.yoouyi.dao;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -27,14 +28,14 @@ public class RoleDAOTest {
     public void testAdd() {
 
         RolePO role = new RolePO();
-        role.setName("admin");
+        role.setName(Constants.ROLE_SYSTEM_USER);
 
         roleDAO.addRole(role);
     }
 
     @Test
     public void testGetRoleById() {
-        RolePO role = roleDAO.getRoleById(1);
+        RolePO role = roleDAO.getRoleByName(Constants.ROLE_SYSTEM_USER);
         System.out.println(role.getName());
     }
     
@@ -53,7 +54,8 @@ public class RoleDAOTest {
     
     @Test
     public void testDeleteRole() {
-        boolean success = roleDAO.deleteRole(2);
+        ObjectId id = new ObjectId("0");
+        boolean success = roleDAO.deleteRole(id);
         Assert.assertTrue(success);
     }
 

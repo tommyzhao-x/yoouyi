@@ -59,7 +59,7 @@ public class UserAction {
 
         Map<String, Object> result = new HashMap<String, Object>();
 
-        result.put("totalNum", userService.countRolesTotalNum());
+        result.put("totalNum", userService.countUsersTotalNum());
         result.put("users", userService.getUsers(pageNum));
 
         return result;

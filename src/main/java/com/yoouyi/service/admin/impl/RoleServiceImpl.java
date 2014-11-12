@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import com.yoouyi.dao.admin.RoleDAO;
@@ -32,7 +33,7 @@ public class RoleServiceImpl implements RoleService {
         return roleDAO.getRolesTotalNum();
     }
 
-    public boolean deleteRole(int id) {
+    public boolean deleteRole(ObjectId id) {
         return roleDAO.deleteRole(id);
     }
 

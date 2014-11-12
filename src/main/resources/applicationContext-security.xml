@@ -15,7 +15,7 @@
         <intercept-url pattern="/travelSearch/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <intercept-url pattern="/api/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <intercept-url pattern="/login/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <intercept-url pattern="/**" access="ROLE_USER" />
+        <intercept-url pattern="/**" access="ROLE_SYSTEM_USER" />
 
         <form-login login-page="/login/index" 
             username-parameter="username" password-parameter="password"

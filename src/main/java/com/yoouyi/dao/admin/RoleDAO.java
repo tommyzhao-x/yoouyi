@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.hibernate.Query;
-import org.hibernate.SessionFactory;
+import org.bson.types.ObjectId;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.yoouyi.common.Constants;
@@ -14,62 +17,61 @@ import com.yoouyi.model.RolePO;
 @Component("roleDAO")
 public class RoleDAO {
 
-    private SessionFactory sessionFactory;
+    private MongoTemplate mongoTemplate;
 
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
+    public MongoTemplate getMongoTemplate() {
+        return mongoTemplate;
     }
 
     @Resource
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    public void setMongoTemplate(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
     }
 
     public boolean addRole(RolePO role) {
-        sessionFactory.getCurrentSession().save(role);
+        mongoTemplate.save(role);
         return true;
     }
 
-    public RolePO getRoleById(int id) {
-        return (RolePO) sessionFactory.getCurrentSession().get(RolePO.class, id);
+    public RolePO getRoleByName(String name) {
+        return (RolePO) mongoTemplate.findOne(Query.query(Criteria.where("name").is(name)), RolePO.class);
     }
 
     public List<RolePO> getRoles(Integer pageNum) {
-        String hql = "from RolePO role ORDER BY role.id DESC";
-        Query query = sessionFactory.getCurrentSession().createQuery(hql);
-        
-        /**
-         * if parameter page is null, we will return all of the roles
-         */
+        Query query = new Query();
+
         if (pageNum != null) {
-            int startIndex = (pageNum-1) * Constants.PAGE_SIZE;
-            
-            query.setFirstResult(startIndex);
-            query.setMaxResults(Constants.PAGE_SIZE);
+            int startIndex = (pageNum - 1) * Constants.PAGE_SIZE;
+
+            query.skip(startIndex);
+            query.limit(Constants.PAGE_SIZE);
         }
-        
-        return query.list();
+
+        query.with(new Sort(Sort.Direction.DESC, "id"));
+
+        return mongoTemplate.find(query, RolePO.class);
     }
 
     /**
      * get the roles total number, for pagination
+     * 
      * @return
      */
     public int getRolesTotalNum() {
-        String hql = "select count(role.id) from RolePO role";
-        Long totalNum = (Long) sessionFactory.getCurrentSession().createQuery(hql).uniqueResult();
-        return totalNum.intValue() ;
+        Long result = mongoTemplate.count(null, RolePO.class);
+        return result.intValue();
     }
 
     /**
      * delete a role by role id
+     * 
      * @param id
      * @return
      */
-    public boolean deleteRole(int id) {
+    public boolean deleteRole(ObjectId id) {
         RolePO role = new RolePO();
         role.setId(id);
-        sessionFactory.getCurrentSession().delete(role);
+        mongoTemplate.remove(role);
         return true;
     }
 

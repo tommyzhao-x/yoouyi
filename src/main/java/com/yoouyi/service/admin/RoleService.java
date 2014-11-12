@@ -2,6 +2,8 @@ package com.yoouyi.service.admin;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
+
 import com.yoouyi.model.RolePO;
 
 public interface RoleService {
@@ -10,7 +12,7 @@ public interface RoleService {
 
     public int countRolesTotalNum();
 
-    public boolean deleteRole(int id);
+    public boolean deleteRole(ObjectId id);
 
     public boolean addRole(RolePO role);
 

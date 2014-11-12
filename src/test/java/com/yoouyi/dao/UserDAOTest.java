@@ -3,18 +3,20 @@ package com.yoouyi.dao;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.bson.types.ObjectId;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.yoouyi.common.Constants;
 import com.yoouyi.dao.admin.RoleDAO;
 import com.yoouyi.dao.admin.UserDAO;
 import com.yoouyi.model.RolePO;
 import com.yoouyi.model.UserPO;
 
-public class UserDAOTest2 {
+public class UserDAOTest {
 
     private static UserDAO userDAO;
     private static RoleDAO roleDAO;
@@ -31,8 +33,7 @@ public class UserDAOTest2 {
     public void testAdd() {
        String userName = "zhaogangtao";
 
-        RolePO role = new  RolePO();
-        role.setId(1);
+        RolePO role = roleDAO.getRoleByName(Constants.ROLE_SYSTEM_USER);
         
         UserPO user = new UserPO();
         user.setUsername(userName);
@@ -43,7 +44,7 @@ public class UserDAOTest2 {
 
     @Test
     public void testGetUserByName() {
-        String userName = "admin";
+        String userName = "zhaogangtao";
         UserPO user = userDAO.getUserByName(userName);
         if (user != null) {
             Assert.assertEquals(userName, user.getUsername());
@@ -56,6 +57,16 @@ public class UserDAOTest2 {
         String remoteAddress = "192.168.1.1";
 
         userDAO.updateUserLoginIp(username, remoteAddress);
+    }
+    
+    @Test
+    public void testPagination() {
+        System.out.print(userDAO.getUsers(1));
+    }
+    
+    @Test
+    public void testCountUserSize() {
+        System.out.println(userDAO.countUsersTotalNum());
     }
 
 }

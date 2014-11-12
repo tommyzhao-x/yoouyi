@@ -10,7 +10,7 @@ public interface UserService {
 
     public boolean addUser(UserPO user);
 
-    public int countRolesTotalNum();
+    public int countUsersTotalNum();
 
     public List<UserPO> getUsers(Integer pageNum);
 

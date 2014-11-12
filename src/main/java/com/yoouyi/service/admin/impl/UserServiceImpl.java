@@ -40,8 +40,8 @@ public class UserServiceImpl implements UserService {
         return userDAO.saveUser(user);
     }
 
-    public int countRolesTotalNum() {
-        return userDAO.countRolesTotalNum();
+    public int countUsersTotalNum() {
+        return userDAO.countUsersTotalNum();
     }
 
     public List<UserPO> getUsers(Integer pageNum) {

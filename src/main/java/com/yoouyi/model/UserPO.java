@@ -7,10 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.bson.types.ObjectId;
+
 @Entity
 @Table(name = "t_user")
 public class UserPO {
-    private int id;
+    private ObjectId id;
     
     private String username;
     private String password;
@@ -26,11 +28,11 @@ public class UserPO {
 
     @Id
     @GeneratedValue
-    public int getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

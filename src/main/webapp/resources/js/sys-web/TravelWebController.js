@@ -10,6 +10,9 @@
             nextText: '下一页',
             ignoreTest: '不限',
             IPAPI: 'api/ip',
+            api: {
+               signUp: 'api/user/signUp'
+            },
             cities: [{city: '北京', id: 131}, {city: '天津', id: 332},
                      {city: '石家庄', id: 150}, {city: '唐山', id: 265}, {city: '秦皇岛', id: 148}, {city: '邯郸', id: 151}, {city: '邢台', id: 266},
                      {city: '保定', id: 307}, {city: '张家口', id: 264}, {city: '承德', id: 207}, {city: '沧州', id: 149}, {city: '廊坊', id: 191},
@@ -137,18 +140,18 @@
             var modalInstance = $modal.open({
                 templateUrl: 'resources/views/sys-web/UserModal.html',
                 controller: 'UserModalController',
-                size: 'sm',
                 resolve: {
                     pageInfo: function () {
                         return {
-                            title: '注册',
+                            title: '登录',
+                            isLogin: true
                         };
                     }
                 }
             });
 
-            modalInstance.result.then(function () {
-                console.log('ye Modal dismissed at: ' + new Date());
+            modalInstance.result.then(function (user) {
+                console.log(user);
             }, function () {
                 console.log('no Modal dismissed at: ' + new Date());
             });
@@ -160,21 +163,24 @@
             var modalInstance = $modal.open({
                 templateUrl: 'resources/views/sys-web/UserModal.html',
                 controller: 'UserModalController',
-                size: 'sm',
                 resolve: {
                     pageInfo: function () {
                         return {
-                            title: '登录',
-                            isLogin: true
+                            title: '注册'
                         };
                     }
                 }
             });
 
-            modalInstance.result.then(function () {
-                console.log('ye Modal dismissed at: ' + new Date());
-            }, function () {
-                console.log('no Modal dismissed at: ' + new Date());
+            modalInstance.result.then(function (user) {
+                console.log(user,  new Date());
+
+                $http({method: 'post', url: $scope.constants.api.signUp, data: user})
+                .success(function(data, status) {
+                    if (data.success) {
+                        $scope.userAdd.formData = {};
+                    }
+                })
             });
         };
 

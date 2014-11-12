@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -87,7 +88,7 @@ public class RoleAction {
     /** delete */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public MessageDTO delete(@PathVariable int id) {
+    public MessageDTO delete(@PathVariable ObjectId id) {
 
         boolean success = roleService.deleteRole(id);
 

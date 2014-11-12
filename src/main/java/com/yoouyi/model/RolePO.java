@@ -11,22 +11,24 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.bson.types.ObjectId;
+
 @Entity
 @Table(name = "t_role")
 public class RolePO {
 
-    private int id;
+    private ObjectId id;
     private String name;
     private boolean enable = true;
     private String comment;
 
     @Id
     @GeneratedValue
-    public int getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
