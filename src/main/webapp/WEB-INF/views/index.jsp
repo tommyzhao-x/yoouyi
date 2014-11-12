@@ -22,6 +22,7 @@
 
     <script src="resources/js/sys-web/app.js"></script>
     <script src="resources/js/sys-web/TravelWebController.js"></script>
+    <script src="resources/js/sys-web/UserModalController.js"></script>
 
     <script src="resources/js/sys-web/search/search.js"></script>
     <script src="resources/js/sys-web/search/SearchController.js"></script>
@@ -49,7 +50,7 @@
         </div>
 
         <div class="header">
-            <div class="col-md-2 ly-left">
+            <div class="ly-logo-container">
                 <div class="logo"></div>
                 <div class="slogan"></div>
 
@@ -65,17 +66,24 @@
                     <div id="amap-container"></div>
                 </div>
             </div>
-            <div class="col-md-10 ly-right">
-                <div class="input-group">
-                    <input type="text" id="travelDestination" data-ng-model="travelWeb.destination"
-                           name="destination" class="form-control">
+            <div class="ly-search-container">
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <input type="text" id="travelDestination" data-ng-model="travelWeb.destination"
+                               name="destination" class="form-control">
 
-                    <div class="input-group-btn">
-                        <button type="button" data-ng-click="searchTravel()" id="travelSearchBtn" class="btn btn-primary">搜索线路</button>
+                        <div class="input-group-btn">
+                            <button type="button" data-ng-click="searchTravel()" id="travelSearchBtn" class="btn btn-primary">搜索线路</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+                <div class="col-md-2 text-right">
+
+                    <a data-ng-click="signUp()">注册</a>
+                    <a data-ng-click="signIn()">登录</a>
+                </div>
+            </div>
         </div>
 
     </div>
