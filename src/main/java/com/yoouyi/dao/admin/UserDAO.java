@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.xml.registry.infomodel.User;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -33,7 +32,7 @@ public class UserDAO {
     public UserPO getUserByName(String userName) {
         Criteria criteria = Criteria.where("username").is(userName);
         Query query = new Query(criteria);
-        UserPO user = (UserPO) mongoTemplate.findOne(query, User.class);
+        UserPO user = (UserPO) mongoTemplate.findOne(query, UserPO.class);
         return user;
     }
 
