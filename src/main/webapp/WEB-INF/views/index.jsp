@@ -83,8 +83,15 @@
                         <a data-ng-click="signUp()">注册</a>
                         <a data-ng-click="signIn()">登录</a>
                     </div>
-                    <div data-ng-if="travelWeb.userInfo.success">
-                        <span>{{ travelWeb.userInfo.data.username }}</span>
+                    <div dropdown  data-ng-if="travelWeb.userInfo.success">
+                        <a dropdown-toggle>
+                            <span class="ly-username">{{ travelWeb.userInfo.data.username }}</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Dropdown link</a></li>
+                            <li><a href="#">Dropdown link</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
