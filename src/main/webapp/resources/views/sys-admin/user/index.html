@@ -39,7 +39,7 @@
                                     <tr data-ng-repeat="user in userPage.users">
                                         <td class="center">{{ user.id }}</td>
                                         <td><a href="#">{{ user.username }}</a></td>
-                                        <td class="hidden-480">{{ user.lastLoginDate }}</td>
+                                        <td class="hidden-480">{{ user.lastLoginDate | date : 'yyyy-MM-dd H:mm:ss' }}</td>
                                         <td class="hidden-480">{{ user.lastLoginIP }}</td>
 
                                         <td class="hidden-480">{{ user.enable }}</td>

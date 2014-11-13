@@ -11,7 +11,9 @@
             ignoreTest: '不限',
             IPAPI: 'api/ip',
             api: {
-               signUp: 'api/user/signUp'
+                checkSession: 'login/checkSession',
+                signUp: 'api/user/signUp',
+                signIn: 'login/signIn'
             },
             cities: [{city: '北京', id: 131}, {city: '天津', id: 332},
                      {city: '石家庄', id: 150}, {city: '唐山', id: 265}, {city: '秦皇岛', id: 148}, {city: '邯郸', id: 151}, {city: '邢台', id: 266},
@@ -101,8 +103,8 @@
         (function init() {
 
             getUserLocationByIp();
-
-
+            
+            checkLogin();
 
         }) ();
         
@@ -151,9 +153,12 @@
             });
 
             modalInstance.result.then(function (user) {
-                console.log(user);
-            }, function () {
-                console.log('no Modal dismissed at: ' + new Date());
+                $http({method: 'post', url: $scope.constants.api.signIn, params: user})
+                .success(function(data, status) {
+                    if (data.success) {
+                        $scope.travelWeb.userInfo = data;
+                    }
+                })
             });
         };
 
@@ -178,11 +183,20 @@
                 $http({method: 'post', url: $scope.constants.api.signUp, data: user})
                 .success(function(data, status) {
                     if (data.success) {
-                        $scope.userAdd.formData = {};
+                        $scope.travelWeb.userInfo = data;
                     }
                 })
             });
         };
+        
+        function checkLogin() {
+            $http({method: 'get', url: $scope.constants.api.checkSession})
+            .success(function(data, status) {
+                if (data.success) {
+                    $scope.travelWeb.userInfo = data;
+                }
+            })
+        }
 
         function getUserLocationByIp() {
             var localStorage = window.localStorage;

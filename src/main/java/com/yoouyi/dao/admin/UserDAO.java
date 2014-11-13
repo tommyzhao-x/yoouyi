@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
+import com.mongodb.WriteResult;
 import com.yoouyi.common.Constants;
 import com.yoouyi.model.UserPO;
 
@@ -65,9 +66,10 @@ public class UserDAO {
 
     public void updateUserLoginIp(String username, String remoteAddress) {
 
-         mongoTemplate.updateFirst(Query.query(Criteria.where("username").is(username)),
+         WriteResult result = mongoTemplate.updateFirst(Query.query(Criteria.where("username").is(username)),
                  Update.update("lastLoginIP", remoteAddress).set("lastLoginDate", (new Date()).getTime()), UserPO.class);
 
+         String x="sdf";
     }
 
 }

@@ -15,15 +15,20 @@
         <intercept-url pattern="/travelSearch/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <intercept-url pattern="/api/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <intercept-url pattern="/login/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <intercept-url pattern="/**" access="ROLE_SYSTEM_USER" />
+        <!-- /member: normal user manager zone -->
+        <intercept-url pattern="/member/**" access="ROLE_SYSTEM_USER, ROLE_SYSTEM_ADMIN" />
+        <!-- /main: system admin user manager zone -->
+        <intercept-url pattern="/main" access="ROLE_SYSTEM_ADMIN, ROLE_SUPER_ADMIN" />
+        <!-- other page only super admin user manager zone -->
+        <intercept-url pattern="/**" access="ROLE_SUPER_ADMIN" />
 
         <form-login login-page="/login/index" 
             username-parameter="username" password-parameter="password"
-            login-processing-url="/login/signIn" default-target-url="/main"
-            authentication-success-handler-ref="loginSuccessHandler"
+            login-processing-url="/login/signIn" default-target-url="/login/success" 
+            always-use-default-target="true"
             authentication-failure-url="/login/index?error" />
         <http-basic />
-        <logout logout-url="/login/signOut" logout-success-url="/logout-success.jsp" />
+        <logout logout-url="/login/signOut" logout-success-url="/logout-success.jsp" invalidate-session="true" />
         <remember-me />
         <headers />
         <!--  csrf /-->
