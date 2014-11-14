@@ -44,10 +44,14 @@
             <div class="col-md-4 ly-line" data-ng-repeat="line in travelPage.lines">
                 <div class="thumbnail">
                     <a href="{{line.infoLink}}" target="_blank">
-                        <img src="{{line.imageLink}}" class="ly-line-img" alt="{{line.title}}">
+                        <img data-ng-src="{{line.imageLink}}" class="ly-line-img" alt="{{line.title}}">
                     </a>
                     <div class="row ly-line-title">
-                        <div class="col-md-12">{{line.title | limitTo:40}}</div>
+                        <div class="col-md-12">
+                            <a href="{{line.infoLink}}" target="_blank">
+                            {{line.title | limitTo:40}}
+                            </a>
+                        </div>
                     </div>
                     <div class="ly-dashed"></div>
 

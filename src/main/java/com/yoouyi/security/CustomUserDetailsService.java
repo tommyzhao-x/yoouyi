@@ -29,10 +29,15 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
         UserPO user = usersService.getUserByName(username);
+        
+        if (user == null) {
+            throw new UsernameNotFoundException(username);
+        }
+        
         Collection<GrantedAuthority> authorities = obtionGrantedAuthorities(user);
-        logger.info("user name: " + user.getUsername());
-        User userDetails = new User(user.getUsername(), user.getPassword(),
+        User userDetails= new User(user.getUsername(), user.getPassword(),
                 user.isEnable(), true, true, true, authorities);
+            
         return userDetails;
     }
 
