@@ -1,8 +1,11 @@
 <div class="modal-header">
     <h4 class="modal-title">{{pageInfo.title}}</h4>
 </div>
-<div class="modal-body">
+<div class="modal-body" data-ng-keydown="initUserData()">
     <form class="form-horizontal" role="form">
+    
+        <div class="alert alert-warning" role="alert" data-ng-if="pageInfo.errorMessage"> {{ pageInfo.errorMessage }} </div>
+    
         <div class="form-group" data-ng-class="{'has-error': pageError.invalidUsername}"
              tooltip="{{ pageError.invalidUsername ? pageError.username.tip : '' }}">
             <label for="username" class="col-sm-4 control-label">用户名：</label>

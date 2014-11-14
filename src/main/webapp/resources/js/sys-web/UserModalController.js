@@ -32,11 +32,15 @@ angular.module('travelWeb').controller('UserModalController', ['$scope', '$modal
             
             $http(config)
             .success(function(data, status) {
-                if ($scope.pageInfo.isLogin && data.success) {
-                    $modalInstance.close(data);
-                } else if (!$scope.pageInfo.isLogin) {
-                    data.data = $scope.user;
-                    $modalInstance.close(data);
+                if (data.success) {
+                    if ($scope.pageInfo.isLogin) {
+                        $modalInstance.close(data);
+                    } else if (!$scope.pageInfo.isLogin) {
+                        data.data = $scope.user;
+                        $modalInstance.close(data);
+                    }
+                } else {
+                    $scope.pageInfo.errorMessage = data.data;
                 }
             })
         }
@@ -45,4 +49,10 @@ angular.module('travelWeb').controller('UserModalController', ['$scope', '$modal
     $scope.cancel = function () {
         $modalInstance.dismiss('cancesl');
     };
+    
+    $scope.initUserData = function () {
+        $scope.pageInfo.errorMessage = undefined;
+        $scope.pageError.invalidUsername = false;
+    };
+    
 }]);
