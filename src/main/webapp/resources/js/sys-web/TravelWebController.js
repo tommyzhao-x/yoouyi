@@ -12,6 +12,7 @@
             IPAPI: 'api/ip',
             api: {
                 checkSession: 'login/checkSession',
+                logout: 'login/signOut',
                 signUp: 'api/user/signUp',
                 signIn: 'login/signIn'
             },
@@ -136,7 +137,7 @@
             $scope.travelWeb.starting = $scope.travelWeb.selectedCity.city;
         };
 
-        $scope.signIn = function () {
+        $scope.signIn = function (username) {
 
             console.log('sign in');
             var modalInstance = $modal.open({
@@ -146,19 +147,16 @@
                     pageInfo: function () {
                         return {
                             title: '登录',
-                            isLogin: true
+                            isLogin: true,
+                            username: username,
+                            api: $scope.constants.api.signIn
                         };
                     }
                 }
             });
 
-            modalInstance.result.then(function (user) {
-                $http({method: 'post', url: $scope.constants.api.signIn, params: user})
-                .success(function(data, status) {
-                    if (data.success) {
-                        $scope.travelWeb.userInfo = data;
-                    }
-                })
+            modalInstance.result.then(function (data) {
+                $scope.travelWeb.userInfo = data;
             });
         };
 
@@ -171,22 +169,28 @@
                 resolve: {
                     pageInfo: function () {
                         return {
-                            title: '注册'
+                            title: '注册',
+                            api: $scope.constants.api.signUp
                         };
                     }
                 }
             });
 
-            modalInstance.result.then(function (user) {
-                console.log(user,  new Date());
+            modalInstance.result.then(function (data) {
+                if (data.success) {
+                    $scope.signIn(data.data.username)
+                }
 
-                $http({method: 'post', url: $scope.constants.api.signUp, data: user})
-                .success(function(data, status) {
-                    if (data.success) {
-                        $scope.travelWeb.userInfo = data;
-                    }
-                })
             });
+        };
+        
+        $scope.logout = function () {
+            $http({method: 'post', url: $scope.constants.api.logout})
+            .success(function(data, status) {
+                if (data.success) {
+                    $scope.travelWeb.userInfo = {};
+                }
+            })
         };
         
         function checkLogin() {

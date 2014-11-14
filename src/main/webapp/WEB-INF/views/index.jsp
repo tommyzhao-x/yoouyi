@@ -89,8 +89,9 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Dropdown link</a></li>
-                            <li><a href="#">Dropdown link</a></li>
+                            <li><a href="member/favorites">我的收藏</a></li>
+                            <li class="divider"></li>
+                            <li><a data-ng-click="logout()">退出</a></li>
                         </ul>
                     </div>
                 </div>

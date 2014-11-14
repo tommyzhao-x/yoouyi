@@ -62,5 +62,22 @@ public class LoginAction {
         
         return success(request);
     }
+    
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    @ResponseBody
+    public MessageDTO signOut(HttpServletRequest request) {
+        
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object userDetail = authentication.getPrincipal();
+        MessageDTO message = new MessageDTO();
+        
+        // if user logout successful the userDetail is 'anonymousUser'
+        if (userDetail instanceof String) {
+            message.setSuccess(true);
+            message.setData(userDetail);
+        }
+
+        return message;
+    }
 
 }
