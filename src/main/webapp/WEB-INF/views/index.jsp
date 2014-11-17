@@ -68,14 +68,57 @@
             </div>
             <div class="ly-search-container">
                 <div class="col-md-10">
-                    <div class="input-group">
-                        <input type="text" id="travelDestination" data-ng-model="travelWeb.destination"
-                               name="destination" class="form-control">
-
-                        <div class="input-group-btn">
+                    
+                    <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="input-group">
+                        
+                          <div class="input-group-addon">出发日期：</div>
+                          <input type="text" class="form-control" datepicker-popup="{{ constants.datePicker.format }}" ng-model="travelWeb.date" 
+                            is-open="travelWeb.datePickerStatus" min-date="constants.datePicker.minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" 
+                            date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" 
+                            ng-focus="openDatePicker()"/>
+                                
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input type="text" id="travelDestination" data-ng-model="travelWeb.destination"
+                                   name="destination" class="form-control">
+                            <span class="input-group-btn">
                             <button type="button" data-ng-click="searchTravel()" id="travelSearchBtn" class="btn btn-primary">搜索线路</button>
+                          </span>
                         </div>
                     </div>
+                
+                
+                    <!-- form class="form-inline" role="form">
+                      <div class="form-group">
+                        <div class="input-group">
+                        
+                          <div class="input-group-addon">出发时间</div>
+                          <input type="text" class="form-control" datepicker-popup="{{ constants.datePicker.format }}" ng-model="travelWeb.date" 
+                            is-open="travelWeb.datePickerStatus" min-date="constants.datePicker.minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" 
+                            date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" 
+                            ng-focus="openDatePicker()"/>
+                                
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <input type="text" id="travelDestination" data-ng-model="travelWeb.destination"
+                                   name="destination" class="form-control">
+                       
+                      </div>
+                      
+                      <div class="form-group">
+                            <button type="button" data-ng-click="searchTravel()" id="travelSearchBtn" class="btn btn-primary">搜索线路</button>
+                        </div>
+                      
+                    </form -->
+                
                 </div>
 
                 <div class="col-md-2 text-right">

@@ -10,6 +10,12 @@
             nextText: '下一页',
             ignoreTest: '不限',
             IPAPI: 'api/ip',
+            datePicker: {
+                minDate: new Date(),
+                format: 'yyyy-MM-dd',
+                dateOptions:{}
+                
+            },
             api: {
                 checkSession: 'login/checkSession',
                 logout: 'login/signOut',
@@ -98,6 +104,7 @@
         };
 
         $scope.travelWeb = {
+                datePickerStatus: false
 
         };
 
@@ -191,6 +198,11 @@
                     $scope.travelWeb.userInfo = {};
                 }
             })
+        };
+        
+        $scope.openDatePicker = function () {
+            console.log('open datepicker');
+            $scope.travelWeb.datePickerStatus = true;
         };
         
         function checkLogin() {
