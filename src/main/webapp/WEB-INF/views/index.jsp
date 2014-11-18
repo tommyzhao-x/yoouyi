@@ -27,6 +27,9 @@
     <script src="resources/js/sys-web/search/search.js"></script>
     <script src="resources/js/sys-web/search/SearchController.js"></script>
 
+    <script src="resources/js/sys-web/member/member.js"></script>
+    <script src="resources/js/sys-web/member/FavoriteController.js"></script>
+    
 
 
     <script src="resources/js/jquery-1.11.1.min.js"></script>

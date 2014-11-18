@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yoouyi.action.api.BasicAction;
@@ -18,6 +19,15 @@ public class FavoriteAction extends BasicAction {
 
     @Autowired
     private FavoriteService favoriteService;
+    
+    @RequestMapping(method = RequestMethod.GET)
+    public MessageDTO index(@RequestParam Integer pageNum) {
+        MessageDTO message = new MessageDTO();
+        message.setData(favoriteService.findAll(pageNum, getUser()));
+        message.setSuccess(true);
+        return message;
+    }
+
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public MessageDTO add(@RequestBody FavoritePO favoritePO) {

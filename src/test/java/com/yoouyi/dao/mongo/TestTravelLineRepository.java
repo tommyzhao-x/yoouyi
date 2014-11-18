@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.yoouyi.dao.travel.TravelLineDAO;
-import com.yoouyi.model.travel.TravelInfoPO;
+import com.yoouyi.model.travel.TripInfoPO;
 
 public class TestTravelLineRepository {
     
@@ -24,14 +24,14 @@ public class TestTravelLineRepository {
     @Test
     public void testInsert() {
         
-        TravelInfoPO travelLinePO = new TravelInfoPO();
+        TripInfoPO travelLinePO = new TripInfoPO();
         travelLinePO.setTitle("tuniu");
         travelLineDAO.insert(travelLinePO);
     }
 
     @Test
     public void testGetTravelLine() {
-        ArrayList<TravelInfoPO> travelLinePOs = (ArrayList<TravelInfoPO>) travelLineDAO.getTravelLine(null);
+        ArrayList<TripInfoPO> travelLinePOs = (ArrayList<TripInfoPO>) travelLineDAO.getTravelLine(null);
         System.out.println(travelLinePOs.size());
 //        for (TravelInfo travelLinePO : travelLinePOs) {
 //            System.out.println(travelLinePO.getId());

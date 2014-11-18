@@ -71,7 +71,7 @@
                 return;
             }
             console.log(travel, $scope.travelWeb.userInfo);
-            $http({method: 'post', url: $scope.travel.apiFavorite, data: {tripId: travel.id}})
+            $http({method: 'post', url: $scope.travel.apiFavorite, data: {trip: {id: travel.id}}})
             .success(function() {
                 
             });

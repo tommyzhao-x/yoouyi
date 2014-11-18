@@ -4,13 +4,17 @@ import java.util.Date;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.yoouyi.model.travel.TripInfoPO;
 
 @Document(collection = "c_favorite")
 public class FavoritePO {
     @Indexed
     private ObjectId userId;
-    private ObjectId tripId;
+    @DBRef
+    private TripInfoPO trip;
     private Date createDate;
 
     public ObjectId getUserId() {
@@ -29,12 +33,12 @@ public class FavoritePO {
         this.createDate = createDate;
     }
 
-    public ObjectId getTripId() {
-        return tripId;
+    public TripInfoPO getTrip() {
+        return trip;
     }
 
-    public void setTripId(ObjectId tripId) {
-        this.tripId = tripId;
+    public void setTrip(TripInfoPO trip) {
+        this.trip = trip;
     }
 
 }
