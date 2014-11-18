@@ -13,8 +13,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.yoouyi.common.Constants;
 import com.yoouyi.dao.admin.RoleDAO;
 import com.yoouyi.dao.admin.UserDAO;
-import com.yoouyi.model.RolePO;
-import com.yoouyi.model.UserPO;
+import com.yoouyi.model.user.RolePO;
+import com.yoouyi.model.user.UserPO;
 
 public class UserDAOTest {
 

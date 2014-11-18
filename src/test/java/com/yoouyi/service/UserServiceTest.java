@@ -7,8 +7,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.yoouyi.common.Constants;
 import com.yoouyi.dao.admin.RoleDAO;
-import com.yoouyi.model.UserPO;
-import com.yoouyi.service.admin.UserService;
+import com.yoouyi.model.user.UserPO;
+import com.yoouyi.service.user.UserService;
 
 public class UserServiceTest {
 

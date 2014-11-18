@@ -1,4 +1,4 @@
-package com.yoouyi.model.mongo;
+package com.yoouyi.model.travel;
 
 import java.util.Date;
 
@@ -8,10 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "travelInfo")
-public class TravelInfo {
+@Document(collection="travelInfo")
+public class TravelInfoPO {
     private ObjectId id;
     private String infoId;
     private String title;

@@ -1,21 +1,22 @@
-package com.yoouyi.model;
+package com.yoouyi.model.user;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "t_user")
+@Document(collection="c_user")
 public class UserPO {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private ObjectId id;
     
     private String username;
     private String password;
+    @DBRef
     private RolePO role;
 
     private String lastLoginIP;
@@ -26,8 +27,6 @@ public class UserPO {
 
     private boolean enable = true;
 
-    @Id
-    @GeneratedValue
     public ObjectId getId() {
         return id;
     }
@@ -60,7 +59,6 @@ public class UserPO {
         this.password = password;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
     public RolePO getRole() {
         return role;
     }

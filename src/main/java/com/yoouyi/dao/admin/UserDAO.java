@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 import com.mongodb.WriteResult;
 import com.yoouyi.common.Constants;
-import com.yoouyi.model.UserPO;
+import com.yoouyi.model.user.UserPO;
 
 @Component("userDAO")
 public class UserDAO {

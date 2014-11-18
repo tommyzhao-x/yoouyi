@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.yoouyi.common.Constants;
-import com.yoouyi.model.RolePO;
+import com.yoouyi.model.user.RolePO;
 
 @Component("roleDAO")
 public class RoleDAO {

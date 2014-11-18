@@ -1,8 +1,8 @@
-package com.yoouyi.service.admin;
+package com.yoouyi.service.user;
 
 import java.util.List;
 
-import com.yoouyi.model.UserPO;
+import com.yoouyi.model.user.UserPO;
 
 public interface UserService {
 

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.yoouyi.common.Constants;
-import com.yoouyi.model.mongo.TravelInfo;
+import com.yoouyi.model.travel.TravelInfoPO;
 import com.yoouyi.model.vo.TravelLineSearchVO;
 
 @Repository("travelLineDAO")
@@ -33,12 +33,12 @@ public class TravelLineDAO {
         this.mongoTemplate = mongoTemplate;
     }
 
-    public void insert(TravelInfo travelLinePO) {
+    public void insert(TravelInfoPO travelLinePO) {
         mongoTemplate.insert(travelLinePO);
     }
     
     
-    public List<TravelInfo> getTravelLine(TravelLineSearchVO searchVO) {
+    public List<TravelInfoPO> getTravelLine(TravelLineSearchVO searchVO) {
         
         Query query = createQuery(searchVO);
         
@@ -53,7 +53,7 @@ public class TravelLineDAO {
             query.with(new Sort(Sort.Direction.ASC, "price"));
         }
         
-        return mongoTemplate.find(query, TravelInfo.class);  
+        return mongoTemplate.find(query, TravelInfoPO.class);  
     }
 
     private Query createQuery(TravelLineSearchVO searchVO) {
@@ -75,7 +75,7 @@ public class TravelLineDAO {
 
     public int count(TravelLineSearchVO searchVO) {
         Query query = createQuery(searchVO);
-        return (int) mongoTemplate.count(query, TravelInfo.class);
+        return (int) mongoTemplate.count(query, TravelInfoPO.class);
     }
     
     public List<String> getAllTravelTime(String starting, String destination, Date itinerary) {

@@ -1,4 +1,4 @@
-package com.yoouyi.service.admin.impl;
+package com.yoouyi.service.user.impl;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.yoouyi.dao.admin.UserDAO;
-import com.yoouyi.model.UserPO;
-import com.yoouyi.service.admin.UserService;
+import com.yoouyi.model.user.UserPO;
+import com.yoouyi.service.user.UserService;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {

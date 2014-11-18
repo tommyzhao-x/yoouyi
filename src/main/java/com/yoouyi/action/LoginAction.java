@@ -22,7 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yoouyi.common.ExceptionMessage;
 import com.yoouyi.common.MessageDTO;
-import com.yoouyi.service.admin.UserService;
+import com.yoouyi.service.user.UserService;
 
 @Controller
 @RequestMapping("/login")

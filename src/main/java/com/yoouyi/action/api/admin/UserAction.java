@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yoouyi.common.MessageDTO;
-import com.yoouyi.model.UserPO;
-import com.yoouyi.service.admin.UserService;
+import com.yoouyi.model.user.UserPO;
+import com.yoouyi.service.user.UserService;
 
 @Controller
 @RequestMapping("/admin/api/user")

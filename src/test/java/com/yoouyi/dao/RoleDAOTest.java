@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.yoouyi.common.Constants;
 import com.yoouyi.dao.admin.RoleDAO;
-import com.yoouyi.model.RolePO;
+import com.yoouyi.model.user.RolePO;
 
 public class RoleDAOTest {
 

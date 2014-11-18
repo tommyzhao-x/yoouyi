@@ -1,4 +1,4 @@
-package com.yoouyi.model;
+package com.yoouyi.model.user;
 
 import java.util.Set;
 
@@ -6,24 +6,26 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "t_role")
+@Document(collection="c_role")
 public class RolePO {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private ObjectId id;
+    @Indexed(unique = true)
     private String name;
     private boolean enable = true;
     private String comment;
 
-    @Id
-    @GeneratedValue
     public ObjectId getId() {
         return id;
     }
@@ -32,7 +34,6 @@ public class RolePO {
         this.id = id;
     }
 
-    @Column(unique = true)
     public String getName() {
         return name;
     }

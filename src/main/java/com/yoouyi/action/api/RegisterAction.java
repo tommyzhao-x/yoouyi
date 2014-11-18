@@ -2,10 +2,13 @@ package com.yoouyi.action.api;
 
 import com.yoouyi.common.Constants;
 import com.yoouyi.common.MessageDTO;
-import com.yoouyi.model.RolePO;
-import com.yoouyi.model.UserPO;
+import com.yoouyi.model.user.RolePO;
+import com.yoouyi.model.user.UserPO;
 import com.yoouyi.model.vo.TravelLineSearchVO;
-import com.yoouyi.service.admin.UserService;
+import com.yoouyi.service.user.RoleService;
+import com.yoouyi.service.user.UserService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+
 import java.util.Map;
 
 @Controller
@@ -21,6 +25,8 @@ import java.util.Map;
 public class RegisterAction {
 
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
 
     public UserService getUserService() {
         return userService;
@@ -35,8 +41,7 @@ public class RegisterAction {
     @ResponseBody
     public MessageDTO signUp(@RequestBody UserPO user) {
 
-        RolePO role = new RolePO();
-        role.setName(Constants.ROLE_SYSTEM_USER);
+        RolePO role = roleService.getRoleByName(Constants.ROLE_SYSTEM_USER);
 
         user.setRole(role);
         boolean success = userService.addUser(user);

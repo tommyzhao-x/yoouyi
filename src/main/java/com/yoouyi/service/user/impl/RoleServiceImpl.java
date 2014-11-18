@@ -1,29 +1,22 @@
-package com.yoouyi.service.admin.impl;
+package com.yoouyi.service.user.impl;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yoouyi.dao.admin.RoleDAO;
-import com.yoouyi.model.RolePO;
-import com.yoouyi.service.admin.RoleService;
+import com.yoouyi.model.user.RolePO;
+import com.yoouyi.service.user.RoleService;
 
 @Service("roleService")
 public class RoleServiceImpl implements RoleService {
     
+    @Autowired
     private RoleDAO roleDAO;
-    
-    public RoleDAO getRoleDAO() {
-        return roleDAO;
-    }
-
-    @Resource
-    public void setRoleDAO(RoleDAO roleDAO) {
-        this.roleDAO = roleDAO;
-    }
 
     public List<RolePO> getRoles(Integer pageNum) {
         return roleDAO.getRoles(pageNum);
@@ -39,6 +32,10 @@ public class RoleServiceImpl implements RoleService {
 
     public boolean addRole(RolePO role) {
         return roleDAO.addRole(role);
+    }
+
+    public RolePO getRoleByName(String name) {
+        return roleDAO.getRoleByName(name);
     }
 
 }

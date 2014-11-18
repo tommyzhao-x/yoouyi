@@ -15,9 +15,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import com.yoouyi.model.RolePO;
-import com.yoouyi.model.UserPO;
-import com.yoouyi.service.admin.UserService;
+import com.yoouyi.model.user.RolePO;
+import com.yoouyi.model.user.UserPO;
+import com.yoouyi.service.user.UserService;
 
 @Component
 public class CustomUserDetailsService implements UserDetailsService {

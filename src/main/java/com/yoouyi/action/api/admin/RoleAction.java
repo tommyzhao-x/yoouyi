@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yoouyi.common.MessageDTO;
-import com.yoouyi.model.RolePO;
-import com.yoouyi.service.admin.RoleService;
+import com.yoouyi.model.user.RolePO;
+import com.yoouyi.service.user.RoleService;
 
 @Controller
 @RequestMapping("/admin/api/role")
