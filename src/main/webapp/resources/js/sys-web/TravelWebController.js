@@ -104,7 +104,8 @@
         };
 
         $scope.travelWeb = {
-                datePickerStatus: false
+                datePickerStatus: false,
+                userInfo: {}
 
         };
 

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="travelInfo")
+@Document(collection="tripInfo")
 public class TravelInfoPO {
     private ObjectId id;
     private String infoId;

@@ -35,7 +35,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
         
         Collection<GrantedAuthority> authorities = obtionGrantedAuthorities(user);
-        User userDetails= new User(user.getUsername(), user.getPassword(),
+        CustomUserDetail userDetails= new CustomUserDetail(user.getId(), user.getUsername(), user.getPassword(),
                 user.isEnable(), true, true, true, authorities);
             
         return userDetails;

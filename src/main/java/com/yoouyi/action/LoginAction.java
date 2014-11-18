@@ -4,13 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.WebAttributes;
@@ -22,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yoouyi.common.ExceptionMessage;
 import com.yoouyi.common.MessageDTO;
+import com.yoouyi.security.CustomUserDetail;
 import com.yoouyi.service.user.UserService;
 
 @Controller
@@ -43,10 +41,10 @@ public class LoginAction {
     public MessageDTO success(HttpServletRequest request) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Object userDetail = authentication.getPrincipal();
-        User user = null;
+        CustomUserDetail user = null;
         
         if (userDetail instanceof UserDetails) {
-            user = (User) userDetail;
+            user = (CustomUserDetail) userDetail;
         }
 
         MessageDTO message = new MessageDTO();

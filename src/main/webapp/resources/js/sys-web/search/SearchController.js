@@ -5,6 +5,7 @@
 
         $scope.travel = {
             api: 'api/travelSearch',
+            apiFavorite: 'api/user/favorite',
             apiMetaData: 'api/travelSearch/metaData',
             itineraryList: ['不限'],
             platformList: ['不限']
@@ -62,6 +63,18 @@
 
         $scope.pageChanged = function() {
             getTravel()
+        };
+        
+        $scope.favorite = function(travel) {
+            if (!$scope.travelWeb.userInfo.success) {
+                $scope.signIn();
+                return;
+            }
+            console.log(travel, $scope.travelWeb.userInfo);
+            $http({method: 'post', url: $scope.travel.apiFavorite, data: {tripId: travel.id}})
+            .success(function() {
+                
+            });
         };
 
         function getUserCityByIp() {

@@ -1,4 +1,4 @@
-package com.yoouyi.action.api;
+package com.yoouyi.action.api.user;
 
 import com.yoouyi.common.Constants;
 import com.yoouyi.common.MessageDTO;
@@ -47,13 +47,6 @@ public class RegisterAction {
         boolean success = userService.addUser(user);
 
         return new MessageDTO(success, null);
-    }
-
-    @RequestMapping(value = "/signIn", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public Map<String, Object> signIn(@RequestBody UserPO user) {
-
-        return null;
     }
 
 }
