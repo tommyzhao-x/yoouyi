@@ -6,28 +6,28 @@
         <div class="panel-body ly-meta">
 
             <div class="row">
-                <div class="col-md-2 ly-meta-data">
+                <div class="col-xs-2 ly-meta-data">
                     行程天数：
                 </div>
-                <div class="col-md-10" id="itineraryList">
+                <div class="col-xs-10" id="itineraryList">
                             <span class="label {{ travelPage.selectedItinerary == itinerary ? 'label-primary' : 'label-default' }}"
                                   data-ng-click="selectMetaData({itinerary: itinerary})" data-ng-repeat="itinerary in travelPage.itineraryList">{{itinerary}}</span>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2 ly-meta-data">
+                <div class="col-xs-2 ly-meta-data">
                     数据平台：
                 </div>
-                <div class="col-md-10" id="platformList">
+                <div class="col-xs-10" id="platformList">
                             <span class="label {{ travelPage.selectedPlatform == platform ? 'label-primary' : 'label-default' }}"
                                   data-ng-click="selectMetaData({platform: platform})" data-ng-repeat="platform in travelPage.platformList">{{platform}}</span>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2 ly-meta-data">
+                <div class="col-xs-2 ly-meta-data">
                     价格排序：
                 </div>
-                <div class="col-md-10">
+                <div class="col-xs-10">
                     <span class="label {{ travelPage.selectedOrder == 0 ? 'label-primary' : 'label-default' }}" data-ng-click="selectMetaData({order: 0})" >升序</span>
                     <span class="label {{ travelPage.selectedOrder == 1 ? 'label-primary' : 'label-default' }}" data-ng-click="selectMetaData({order: 1})" >降序</span>
                 </div>
@@ -38,16 +38,16 @@
 
     <div class="panel panel-default">
         <div id="travelLines" class="panel-body">
-            <div class="col-md-12" data-ng-if="!travelPage.lines">
+            <div class="col-xs-12" data-ng-if="!travelPage.lines">
                 暂无此线路信息！
             </div>
-            <div class="col-md-4 ly-line" data-ng-repeat="line in travelPage.lines">
+            <div class="col-xs-4 ly-line" data-ng-repeat="line in travelPage.lines">
                 <div class="thumbnail">
                     <a href="{{line.infoLink}}" target="_blank">
                         <img data-ng-src="{{line.imageLink}}" class="ly-line-img" alt="{{line.title}}">
                     </a>
                     <div class="row ly-line-title">
-                        <div class="col-md-12">
+                        <div class="col-xs-12">
                             <a href="{{line.infoLink}}" target="_blank">
                             {{line.title | limitTo:40}}
                             </a>
@@ -56,12 +56,12 @@
                     <div class="ly-dashed"></div>
 
                     <div class="row ly-line-info">
-                        <div class="col-md-6 text-left ly-line-price">￥{{line.price}}元</div>
-                        <div class="col-md-6 text-right ly-line-platform">{{line.platform}}</div>
+                        <div class="col-xs-6 text-left ly-line-price">￥{{line.price}}元</div>
+                        <div class="col-xs-6 text-right ly-line-platform">{{line.platform}}</div>
                     </div>
                     <div class="row ly-line-info">
-                        <div class="col-md-6 text-left">{{line.port}}天行程</div>
-                        <div class="col-md-6 text-right">
+                        <div class="col-xs-6 text-left">{{line.port}}天行程</div>
+                        <div class="col-xs-6 text-right">
                             <span data-ng-click="favorite(line)"><i class="glyphicon glyphicon-heart"></i>收藏</span>
                         </div>
                     </div>

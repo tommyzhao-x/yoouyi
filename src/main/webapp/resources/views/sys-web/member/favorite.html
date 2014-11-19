@@ -5,14 +5,14 @@
         </div>
         
         <div id="travelLines" class="panel-body">
-            <div class="col-md-12" data-ng-if="!favoritePage.items"> 暂无收藏信息！ </div>
-            <div class="col-md-4 ly-line" data-ng-repeat="item in favoritePage.items">
+            <div class="col-xs-12" data-ng-if="!favoritePage.items"> 暂无收藏信息！ </div>
+            <div class="col-xs-4 ly-line" data-ng-repeat="item in favoritePage.items">
                 <div class="thumbnail">
                     <a href="{{item.trip.infoLink}}" target="_blank">
                         <img data-ng-src="{{item.trip.imageLink}}" class="ly-line-img" alt="{{item.trip.title}}">
                     </a>
                     <div class="row ly-line-title">
-                        <div class="col-md-12">
+                        <div class="col-xs-12">
                             <a href="{{item.trip.infoLink}}" target="_blank">
                             {{ item.trip.title | limitTo:40}}
                             </a>
@@ -21,12 +21,12 @@
                     <div class="ly-dashed"></div>
 
                     <div class="row ly-line-info">
-                        <div class="col-md-6 text-left ly-line-price">￥{{item.trip.price}}元</div>
-                        <div class="col-md-6 text-right ly-line-platform">{{item.trip.platform}}</div>
+                        <div class="col-xs-6 text-left ly-line-price">￥{{item.trip.price}}元</div>
+                        <div class="col-xs-6 text-right ly-line-platform">{{item.trip.platform}}</div>
                     </div>
                     <div class="row ly-line-info">
-                        <div class="col-md-6 text-left">{{item.trip.port}}天行程</div>
-                        <div class="col-md-6 text-right">收藏时间: {{ item.createDate| date : 'yyyy-MM-dd HH:mm:ss'}}</div>
+                        <div class="col-xs-6 text-left">{{item.trip.port}}天行程</div>
+                        <div class="col-xs-6 text-right">收藏时间: {{ item.createDate| date : 'yyyy-MM-dd HH:mm:ss'}}</div>
                     </div>
                 </div>
             </div>

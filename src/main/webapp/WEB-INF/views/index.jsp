@@ -70,9 +70,9 @@
                 </div>
             </div>
             <div class="ly-search-container">
-                <div class="col-md-10">
+                <div class="col-xs-10">
                     
-                    <div class="col-md-4">
+                    <div class="col-xs-4">
                     <div class="form-group">
                         <div class="input-group">
                         
@@ -86,7 +86,7 @@
                       </div>
                     </div>
                     
-                    <div class="col-md-8">
+                    <div class="col-xs-8">
                         <div class="input-group">
                             <input type="text" id="travelDestination" data-ng-model="travelWeb.destination"
                                    name="destination" class="form-control">
@@ -124,7 +124,7 @@
                 
                 </div>
 
-                <div class="col-md-2 text-right">
+                <div class="col-xs-2 text-right">
                     <div data-ng-if="!travelWeb.userInfo.success">
                         <a data-ng-click="signUp()">注册</a>
                         <a data-ng-click="signIn()">登录</a>
@@ -151,7 +151,7 @@
 <div class="container">
 
     <div class="row main">
-        <div class="col-md-2 ly-left">
+        <div class="col-xs-2 ly-left">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">旅游线路推荐</h3>
@@ -203,7 +203,7 @@
             </div>
 
         </div>
-        <div class="col-md-10 ly-right" data-ng-view>
+        <div class="col-xs-10 ly-right" data-ng-view>
 
         </div>
     </div>
