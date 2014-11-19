@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/index")
+@RequestMapping(value={"/index", "/member"})
 public class IndexAction {
 
     @RequestMapping(method = RequestMethod.GET)
