@@ -1,4 +1,4 @@
-package com.yoouyi.service.travel;
+package com.yoouyi.service.trip;
 
 import java.util.Date;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import com.yoouyi.common.Pagination;
 import com.yoouyi.model.vo.TravelLineSearchVO;
 
-public interface TravelService {
+public interface TripService {
     public Pagination getAll(TravelLineSearchVO searchVO);
 
     public List<String> getAllTravelTimes(String starting, String keyWord, Date departure);

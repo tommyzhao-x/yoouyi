@@ -1,4 +1,4 @@
-package com.yoouyi.dao.travel;
+package com.yoouyi.dao.trip;
 
 import java.util.Date;
 import java.util.List;
@@ -15,11 +15,11 @@ import org.springframework.stereotype.Repository;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.yoouyi.common.Constants;
-import com.yoouyi.model.travel.TripInfoPO;
+import com.yoouyi.model.trip.TripInfoPO;
 import com.yoouyi.model.vo.TravelLineSearchVO;
 
-@Repository("travelLineDAO")
-public class TravelLineDAO {
+@Repository("tripDAO")
+public class TripDAO {
 
     private MongoTemplate mongoTemplate;
 

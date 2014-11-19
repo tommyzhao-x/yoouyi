@@ -1,4 +1,4 @@
-package com.yoouyi.model.travel;
+package com.yoouyi.model.trip;
 
 import java.util.Date;
 

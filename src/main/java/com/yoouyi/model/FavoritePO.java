@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.yoouyi.model.travel.TripInfoPO;
+import com.yoouyi.model.trip.TripInfoPO;
 
 @Document(collection = "c_favorite")
 public class FavoritePO {

@@ -7,18 +7,18 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.yoouyi.dao.travel.TravelLineDAO;
-import com.yoouyi.model.travel.TripInfoPO;
+import com.yoouyi.dao.trip.TripDAO;
+import com.yoouyi.model.trip.TripInfoPO;
 
 public class TestTravelLineRepository {
     
-    private static TravelLineDAO travelLineDAO;
+    private static TripDAO travelLineDAO;
     
     @BeforeClass
     public static void setUp() {
         ApplicationContext acts = new ClassPathXmlApplicationContext("classpath:/*.xml");
 
-        travelLineDAO = (TravelLineDAO) acts.getBean("travelLineDAO");
+        travelLineDAO = (TripDAO) acts.getBean("travelLineDAO");
     }
     
     @Test
