@@ -1,4 +1,4 @@
-package com.yoouyi.dao;
+package com.yoouyi.dao.trip;
 
 import java.util.Date;
 
@@ -7,17 +7,17 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.yoouyi.dao.admin.RoleDAO;
+import com.yoouyi.dao.BaseDAOTest;
 import com.yoouyi.dao.user.FavoriteDAO;
+import com.yoouyi.dao.user.RoleDAO;
 import com.yoouyi.model.FavoritePO;
 
-public class TestFavoriteDAO {
+public class TestFavoriteDAO implements BaseDAOTest {
 
     private static FavoriteDAO favoriteDAO;
 
     @BeforeClass
     public static void setUp() {
-        ApplicationContext acts = new ClassPathXmlApplicationContext("classpath:/*.xml");
 
         favoriteDAO = (FavoriteDAO) acts.getBean("favoriteDAO");
     }

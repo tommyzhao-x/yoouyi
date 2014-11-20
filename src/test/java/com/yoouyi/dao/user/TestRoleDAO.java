@@ -1,4 +1,4 @@
-package com.yoouyi.dao;
+package com.yoouyi.dao.user;
 
 import java.util.List;
 
@@ -6,21 +6,17 @@ import org.bson.types.ObjectId;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.yoouyi.common.Constants;
-import com.yoouyi.dao.admin.RoleDAO;
+import com.yoouyi.dao.BaseDAOTest;
 import com.yoouyi.model.user.RolePO;
 
-public class RoleDAOTest {
+public class TestRoleDAO implements BaseDAOTest {
 
     private static RoleDAO roleDAO;
 
     @BeforeClass
     public static void setUp() {
-        ApplicationContext acts = new ClassPathXmlApplicationContext("classpath:/*.xml");
-
         roleDAO = (RoleDAO) acts.getBean("roleDAO");
     }
 
@@ -28,7 +24,7 @@ public class RoleDAOTest {
     public void testAdd() {
 
         RolePO role = new RolePO();
-        role.setName(Constants.ROLE_SYSTEM_USER);
+        role.setName(Constants.ROLE_SYSTEM_ADMIN);
 
         roleDAO.addRole(role);
     }

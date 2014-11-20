@@ -1,29 +1,21 @@
-package com.yoouyi.dao;
+package com.yoouyi.dao.user;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import org.bson.types.ObjectId;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.yoouyi.common.Constants;
-import com.yoouyi.dao.admin.RoleDAO;
-import com.yoouyi.dao.admin.UserDAO;
+import com.yoouyi.dao.BaseDAOTest;
 import com.yoouyi.model.user.RolePO;
 import com.yoouyi.model.user.UserPO;
 
-public class UserDAOTest {
+public class TestUserDAO implements BaseDAOTest {
 
     private static UserDAO userDAO;
     private static RoleDAO roleDAO;
 
     @BeforeClass
     public static void setUp() {
-        ApplicationContext acts = new ClassPathXmlApplicationContext("classpath:/*.xml");
 
         userDAO = (UserDAO) acts.getBean("userDAO");
         roleDAO = (RoleDAO) acts.getBean("roleDAO");
@@ -33,7 +25,7 @@ public class UserDAOTest {
     public void testAdd() {
        String userName = "zhaogangtao";
 
-        RolePO role = roleDAO.getRoleByName(Constants.ROLE_SYSTEM_USER);
+        RolePO role = roleDAO.getRoleByName(Constants.ROLE_SYSTEM_ADMIN);
         
         UserPO user = new UserPO();
         user.setUsername(userName);
@@ -47,6 +39,7 @@ public class UserDAOTest {
         String userName = "zhaogangtao";
         UserPO user = userDAO.getUserByName(userName);
         if (user != null) {
+            System.out.println(user.getRole().getName());
             Assert.assertEquals(userName, user.getUsername());
         }
     }

@@ -7,14 +7,14 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.yoouyi.model.trip.TripInfoPO;
+import com.yoouyi.model.trip.TripPO;
 
 @Document(collection = "c_favorite")
 public class FavoritePO {
     @Indexed
     private ObjectId userId;
     @DBRef
-    private TripInfoPO trip;
+    private TripPO trip;
     private Date createDate;
 
     public ObjectId getUserId() {
@@ -33,11 +33,11 @@ public class FavoritePO {
         this.createDate = createDate;
     }
 
-    public TripInfoPO getTrip() {
+    public TripPO getTrip() {
         return trip;
     }
 
-    public void setTrip(TripInfoPO trip) {
+    public void setTrip(TripPO trip) {
         this.trip = trip;
     }
 

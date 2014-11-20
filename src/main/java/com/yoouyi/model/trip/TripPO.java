@@ -11,7 +11,7 @@ import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="tripInfo")
-public class TripInfoPO {
+public class TripPO {
     private ObjectId id;
     private String infoId;
     private String title;

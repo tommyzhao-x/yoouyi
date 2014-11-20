@@ -15,8 +15,8 @@ import org.springframework.stereotype.Repository;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.yoouyi.common.Constants;
-import com.yoouyi.model.trip.TripInfoPO;
-import com.yoouyi.model.vo.TravelLineSearchVO;
+import com.yoouyi.model.trip.TripPO;
+import com.yoouyi.model.vo.TripSearchVO;
 
 @Repository("tripDAO")
 public class TripDAO {
@@ -32,12 +32,12 @@ public class TripDAO {
         this.mongoTemplate = mongoTemplate;
     }
 
-    public void insert(TripInfoPO travelLinePO) {
+    public void insert(TripPO travelLinePO) {
         mongoTemplate.insert(travelLinePO);
     }
     
     
-    public List<TripInfoPO> getTravelLine(TravelLineSearchVO searchVO) {
+    public List<TripPO> getTravelLine(TripSearchVO searchVO) {
         
         Query query = createQuery(searchVO);
         
@@ -52,10 +52,10 @@ public class TripDAO {
             query.with(new Sort(Sort.Direction.ASC, "price"));
         }
         
-        return mongoTemplate.find(query, TripInfoPO.class);  
+        return mongoTemplate.find(query, TripPO.class);  
     }
 
-    private Query createQuery(TravelLineSearchVO searchVO) {
+    private Query createQuery(TripSearchVO searchVO) {
         Criteria travelLineCriteria = Criteria.where("starting").is(searchVO.getStarting())
                 .and("destination").is(searchVO.getDestination());
         
@@ -72,15 +72,15 @@ public class TripDAO {
         return query;
     }
 
-    public int count(TravelLineSearchVO searchVO) {
+    public int count(TripSearchVO searchVO) {
         Query query = createQuery(searchVO);
-        return (int) mongoTemplate.count(query, TripInfoPO.class);
+        return (int) mongoTemplate.count(query, TripPO.class);
     }
     
     public List<String> getAllTravelTime(String starting, String destination, Date itinerary) {
         BasicDBObject whereQuery = createMetaDateQuery(starting, destination, itinerary);
         
-        DBCollection query= mongoTemplate.getCollection(mongoTemplate.getCollectionName(TripInfoPO.class));
+        DBCollection query= mongoTemplate.getCollection(mongoTemplate.getCollectionName(TripPO.class));
         List<String> result = query.distinct("port", whereQuery);
         return result;
     }
@@ -88,7 +88,7 @@ public class TripDAO {
     public List<String> getAllTravelPlatForm(String starting, String destination, Date itinerary) {
         BasicDBObject whereQuery = createMetaDateQuery(starting, destination, itinerary);
 
-        DBCollection query= mongoTemplate.getCollection(mongoTemplate.getCollectionName(TripInfoPO.class));
+        DBCollection query= mongoTemplate.getCollection(mongoTemplate.getCollectionName(TripPO.class));
         List<String> result = query.distinct("platform", whereQuery);
         return result;
     }

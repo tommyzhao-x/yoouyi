@@ -77,7 +77,7 @@
                         <div class="input-group">
                         
                           <div class="input-group-addon">出发日期：</div>
-                          <input type="text" class="form-control" datepicker-popup="{{ constants.datePicker.format }}" ng-model="travelWeb.date" 
+                          <input type="text" class="form-control" datepicker-popup="{{ constants.datePicker.format }}" ng-model="travelWeb.tripTime" 
                             is-open="travelWeb.datePickerStatus" min-date="constants.datePicker.minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" 
                             date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" 
                             ng-focus="openDatePicker()"/>

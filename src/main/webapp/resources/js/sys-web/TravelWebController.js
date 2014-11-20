@@ -127,8 +127,9 @@
         };
 
         $scope.generateTravelLink = function () {
+            var tripTime = $scope.travelWeb.tripTime ? (new Date($scope.travelWeb.tripTime)).getTime() : '';
 
-            return 'index/' + [$scope.travelWeb.starting, $scope.travelWeb.destination,
+            return 'index/' + [$scope.travelWeb.starting, $scope.travelWeb.destination, tripTime,
                 $scope.travelWeb.selectedItinerary, $scope.travelWeb.selectedPlatform, $scope.travelWeb.selectedOrder].join('_');
         };
 

@@ -1,22 +1,19 @@
-package com.yoouyi.dao.mongo;
+package com.yoouyi.dao.trip;
 
 import java.util.ArrayList;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.yoouyi.dao.trip.TripDAO;
-import com.yoouyi.model.trip.TripInfoPO;
+import com.yoouyi.dao.BaseDAOTest;
+import com.yoouyi.model.trip.TripPO;
 
-public class TestTravelLineRepository {
+public class TestTripDAO implements BaseDAOTest {
     
     private static TripDAO travelLineDAO;
     
     @BeforeClass
     public static void setUp() {
-        ApplicationContext acts = new ClassPathXmlApplicationContext("classpath:/*.xml");
 
         travelLineDAO = (TripDAO) acts.getBean("travelLineDAO");
     }
@@ -24,14 +21,14 @@ public class TestTravelLineRepository {
     @Test
     public void testInsert() {
         
-        TripInfoPO travelLinePO = new TripInfoPO();
+        TripPO travelLinePO = new TripPO();
         travelLinePO.setTitle("tuniu");
         travelLineDAO.insert(travelLinePO);
     }
 
     @Test
     public void testGetTravelLine() {
-        ArrayList<TripInfoPO> travelLinePOs = (ArrayList<TripInfoPO>) travelLineDAO.getTravelLine(null);
+        ArrayList<TripPO> travelLinePOs = (ArrayList<TripPO>) travelLineDAO.getTravelLine(null);
         System.out.println(travelLinePOs.size());
 //        for (TravelInfo travelLinePO : travelLinePOs) {
 //            System.out.println(travelLinePO.getId());

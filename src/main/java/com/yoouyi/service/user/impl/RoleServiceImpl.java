@@ -8,7 +8,7 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yoouyi.dao.admin.RoleDAO;
+import com.yoouyi.dao.user.RoleDAO;
 import com.yoouyi.model.user.RolePO;
 import com.yoouyi.service.user.RoleService;
 

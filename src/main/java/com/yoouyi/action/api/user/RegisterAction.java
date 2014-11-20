@@ -4,7 +4,7 @@ import com.yoouyi.common.Constants;
 import com.yoouyi.common.MessageDTO;
 import com.yoouyi.model.user.RolePO;
 import com.yoouyi.model.user.UserPO;
-import com.yoouyi.model.vo.TravelLineSearchVO;
+import com.yoouyi.model.vo.TripSearchVO;
 import com.yoouyi.service.user.RoleService;
 import com.yoouyi.service.user.UserService;
 

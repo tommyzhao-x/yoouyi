@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.yoouyi.common.Constants;
-import com.yoouyi.dao.admin.RoleDAO;
+import com.yoouyi.dao.user.RoleDAO;
 import com.yoouyi.model.user.UserPO;
 import com.yoouyi.service.user.UserService;
 

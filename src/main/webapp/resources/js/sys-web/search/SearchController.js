@@ -28,12 +28,13 @@
                var searchItems = $routeParams.searchItems.split('_');
                console.log(searchItems, _.size(searchItems));
 
-               if (_.size(searchItems) == 5) {
+               if (_.size(searchItems) == 6) {
                    $scope.travelPage.starting = searchItems[0];
                    $scope.travelPage.destination = searchItems[1];
-                   $scope.travelPage.selectedItinerary = searchItems[2];
-                   $scope.travelPage.selectedPlatform = searchItems[3];
-                   $scope.travelPage.selectedOrder = searchItems[4];
+                   $scope.travelPage.tripTime = searchItems[2];
+                   $scope.travelPage.selectedItinerary = searchItems[3];
+                   $scope.travelPage.selectedPlatform = searchItems[4];
+                   $scope.travelPage.selectedOrder = searchItems[5];
 //                   $rootScope.$broadcast('onSearchItems', generateParameters());
                }
                // load page data
@@ -83,7 +84,7 @@
 
         function generateTravelLink() {
 
-            return 'index/' + [$scope.travelPage.starting, $scope.travelPage.destination,
+            return 'index/' + [$scope.travelPage.starting, $scope.travelPage.destination, $scope.travelPage.travelWeb.travelTime,
                 $scope.travelPage.selectedItinerary, $scope.travelPage.selectedPlatform, $scope.travelPage.selectedOrder].join('_');
         }
 
@@ -116,14 +117,20 @@
         }
 
         function generateParameters () {
-            return {
-                starting: $scope.travelPage.starting,
-                destination : $scope.travelPage.destination,
-                itinerary : $scope.constants.ignoreTest == $scope.travelPage.selectedItinerary ? '': $scope.travelPage.selectedItinerary,
-                platform : $scope.constants.ignoreTest == $scope.travelPage.selectedPlatform ? '': $scope.travelPage.selectedPlatform,
-                order : !!$scope.travelPage.selectedOrder,
-                pageNum : $scope.travelPage.currentPage
-            };
+            var params = {
+                    starting: $scope.travelPage.starting,
+                    destination : $scope.travelPage.destination,
+                    itinerary : $scope.constants.ignoreTest == $scope.travelPage.selectedItinerary ? '': $scope.travelPage.selectedItinerary,
+                    platform : $scope.constants.ignoreTest == $scope.travelPage.selectedPlatform ? '': $scope.travelPage.selectedPlatform,
+                    order : !!$scope.travelPage.selectedOrder,
+                    pageNum : $scope.travelPage.currentPage
+                }
+            
+            if ($scope.travelPage.tripTime) {
+                params.tripTime = $scope.travelPage.tripTime;
+            }
+            
+            return params;
         }
         
         

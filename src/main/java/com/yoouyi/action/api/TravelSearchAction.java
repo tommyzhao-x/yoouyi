@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.yoouyi.model.vo.TravelLineSearchVO;
+import com.yoouyi.model.vo.TripSearchVO;
 import com.yoouyi.service.trip.TripService;
 
 @Controller
@@ -27,7 +27,7 @@ public class TravelSearchAction {
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Map<String, Object> index(@RequestBody TravelLineSearchVO searchVO) {
+    public Map<String, Object> index(@RequestBody TripSearchVO searchVO) {
 
 
         Map<String, Object> result = new HashMap<String, Object>();

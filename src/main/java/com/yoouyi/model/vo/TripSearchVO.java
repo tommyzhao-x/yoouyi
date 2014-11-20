@@ -1,6 +1,7 @@
 package com.yoouyi.model.vo;
 
-public class TravelLineSearchVO {
+
+public class TripSearchVO {
 
     private String starting;
     private String destination;
@@ -8,6 +9,7 @@ public class TravelLineSearchVO {
     private boolean order;
     private Integer pageNum;
     private String platform;
+    private Long tripTime;
 
     public String getDestination() {
         return destination;
@@ -55,6 +57,14 @@ public class TravelLineSearchVO {
 
     public void setStarting(String starting) {
         this.starting = starting;
+    }
+
+    public Long getTripTime() {
+        return tripTime;
+    }
+
+    public void setTripTime(Long tripTime) {
+        this.tripTime = tripTime;
     }
 
 }

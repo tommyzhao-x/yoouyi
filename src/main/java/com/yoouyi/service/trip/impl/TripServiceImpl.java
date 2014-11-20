@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.yoouyi.common.Pagination;
 import com.yoouyi.dao.trip.TripDAO;
-import com.yoouyi.model.vo.TravelLineSearchVO;
+import com.yoouyi.model.vo.TripSearchVO;
 import com.yoouyi.service.trip.TripService;
 
 @Service("tripService")
@@ -19,7 +19,7 @@ public class TripServiceImpl implements TripService {
     @Autowired
     private TripDAO tripDAO;
 
-    public Pagination getAll(TravelLineSearchVO searchVO) {
+    public Pagination getAll(TripSearchVO searchVO) {
         Pagination pagination = Pagination.getInstance();
 
         pagination.setItems(tripDAO.getTravelLine(searchVO));

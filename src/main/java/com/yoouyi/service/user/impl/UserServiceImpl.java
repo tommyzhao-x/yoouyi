@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.yoouyi.dao.admin.UserDAO;
+import com.yoouyi.dao.user.UserDAO;
 import com.yoouyi.model.user.UserPO;
 import com.yoouyi.service.user.UserService;
 
