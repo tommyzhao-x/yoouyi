@@ -7,7 +7,7 @@ import com.yoouyi.common.Pagination;
 import com.yoouyi.model.vo.TripSearchVO;
 
 public interface TripService {
-    public Pagination getAll(TripSearchVO searchVO);
+    public Pagination findAll(TripSearchVO searchVO);
 
     public List<String> getAllTravelTimes(String starting, String keyWord, Date departure);
 

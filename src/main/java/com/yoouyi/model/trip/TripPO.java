@@ -1,13 +1,13 @@
 package com.yoouyi.model.trip;
 
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="tripInfo")
@@ -23,7 +23,7 @@ public class TripPO {
     private String port;
     private String groupsTimeLine;
     private String price;
-
+    
     private String comments;
     private String groupsLine;
     private String satisfaction;

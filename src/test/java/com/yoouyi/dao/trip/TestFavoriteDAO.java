@@ -4,15 +4,12 @@ import java.util.Date;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.yoouyi.dao.BaseDAOTest;
+import com.yoouyi.BaseTestCase;
 import com.yoouyi.dao.user.FavoriteDAO;
-import com.yoouyi.dao.user.RoleDAO;
 import com.yoouyi.model.FavoritePO;
 
-public class TestFavoriteDAO implements BaseDAOTest {
+public class TestFavoriteDAO implements BaseTestCase {
 
     private static FavoriteDAO favoriteDAO;
 

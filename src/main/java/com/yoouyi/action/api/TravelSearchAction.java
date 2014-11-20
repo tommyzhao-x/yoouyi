@@ -32,7 +32,7 @@ public class TravelSearchAction {
 
         Map<String, Object> result = new HashMap<String, Object>();
 
-        result.put("lines", tripService.getAll(searchVO));
+        result.put("lines", tripService.findAll(searchVO));
 
         return result;
     }

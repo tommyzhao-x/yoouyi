@@ -4,12 +4,12 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.yoouyi.BaseTestCase;
 import com.yoouyi.common.Constants;
-import com.yoouyi.dao.BaseDAOTest;
 import com.yoouyi.model.user.RolePO;
 import com.yoouyi.model.user.UserPO;
 
-public class TestUserDAO implements BaseDAOTest {
+public class TestUserDAO implements BaseTestCase {
 
     private static UserDAO userDAO;
     private static RoleDAO roleDAO;

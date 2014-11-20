@@ -7,11 +7,11 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.yoouyi.BaseTestCase;
 import com.yoouyi.common.Constants;
-import com.yoouyi.dao.BaseDAOTest;
 import com.yoouyi.model.user.RolePO;
 
-public class TestRoleDAO implements BaseDAOTest {
+public class TestRoleDAO implements BaseTestCase {
 
     private static RoleDAO roleDAO;
 

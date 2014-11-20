@@ -2,22 +2,20 @@ package com.yoouyi.service;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.yoouyi.BaseTestCase;
 import com.yoouyi.common.Constants;
 import com.yoouyi.dao.user.RoleDAO;
 import com.yoouyi.model.user.UserPO;
 import com.yoouyi.service.user.UserService;
 
-public class UserServiceTest {
+public class UserServiceTest implements BaseTestCase {
 
     private static UserService userService;
     private static RoleDAO roleDAO;
 
     @BeforeClass
     public static void setUp() {
-        ApplicationContext acts = new ClassPathXmlApplicationContext("classpath:/*.xml");
 
         userService = (UserService) acts.getBean("userService");
         roleDAO = (RoleDAO) acts.getBean("roleDAO");

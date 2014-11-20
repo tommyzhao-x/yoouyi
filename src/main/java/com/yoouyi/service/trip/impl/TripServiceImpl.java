@@ -19,10 +19,10 @@ public class TripServiceImpl implements TripService {
     @Autowired
     private TripDAO tripDAO;
 
-    public Pagination getAll(TripSearchVO searchVO) {
+    public Pagination findAll(TripSearchVO searchVO) {
         Pagination pagination = Pagination.getInstance();
 
-        pagination.setItems(tripDAO.getTravelLine(searchVO));
+        pagination.setItems(tripDAO.findAll(searchVO));
         pagination.setSize(tripDAO.count(searchVO));
         return pagination;
     }

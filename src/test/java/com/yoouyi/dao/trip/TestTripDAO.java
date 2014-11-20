@@ -5,17 +5,18 @@ import java.util.ArrayList;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.yoouyi.dao.BaseDAOTest;
+import com.yoouyi.BaseTestCase;
 import com.yoouyi.model.trip.TripPO;
+import com.yoouyi.model.vo.TripSearchVO;
 
-public class TestTripDAO implements BaseDAOTest {
+public class TestTripDAO implements BaseTestCase {
     
-    private static TripDAO travelLineDAO;
+    private static TripDAO tripDAO;
     
     @BeforeClass
     public static void setUp() {
 
-        travelLineDAO = (TripDAO) acts.getBean("travelLineDAO");
+        tripDAO = (TripDAO) acts.getBean("tripDAO");
     }
     
     @Test
@@ -23,12 +24,15 @@ public class TestTripDAO implements BaseDAOTest {
         
         TripPO travelLinePO = new TripPO();
         travelLinePO.setTitle("tuniu");
-        travelLineDAO.insert(travelLinePO);
+        tripDAO.insert(travelLinePO);
     }
 
     @Test
     public void testGetTravelLine() {
-        ArrayList<TripPO> travelLinePOs = (ArrayList<TripPO>) travelLineDAO.getTravelLine(null);
+        TripSearchVO searchItem = new TripSearchVO();
+        searchItem.setStarting("上海");
+        searchItem.setDestination("华山");
+        ArrayList<TripPO> travelLinePOs = (ArrayList<TripPO>) tripDAO.findAll(searchItem);
         System.out.println(travelLinePOs.size());
 //        for (TravelInfo travelLinePO : travelLinePOs) {
 //            System.out.println(travelLinePO.getId());
@@ -37,7 +41,7 @@ public class TestTripDAO implements BaseDAOTest {
     
     @Test
     public void testGetAllTravelTime() {
-        System.out.println(travelLineDAO.getAllTravelTime(null, null, null));
+        System.out.println(tripDAO.getAllTravelTime(null, null, null));
     }
     
 }

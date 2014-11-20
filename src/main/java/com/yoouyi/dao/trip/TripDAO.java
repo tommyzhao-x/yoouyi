@@ -37,7 +37,7 @@ public class TripDAO {
     }
     
     
-    public List<TripPO> getTravelLine(TripSearchVO searchVO) {
+    public List<TripPO> findAll(TripSearchVO searchVO) {
         
         Query query = createQuery(searchVO);
         
