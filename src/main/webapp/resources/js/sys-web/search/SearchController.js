@@ -7,6 +7,7 @@
             api: 'api/travelSearch',
             apiFavorite: 'api/user/favorite',
             apiMetaData: 'api/travelSearch/metaData',
+            apiRecent: 'api/recent',
             itineraryList: ['不限'],
             platformList: ['不限']
         };
@@ -73,6 +74,14 @@
             }
             console.log(travel, $scope.travelWeb.userInfo);
             $http({method: 'post', url: $scope.travel.apiFavorite, data: {trip: {id: travel.id}}})
+            .success(function() {
+                
+            });
+        };
+        
+        $scope.clickTripLink = function(trip) {
+            console.log(trip);
+            $http({method: 'post', url: $scope.travel.apiRecent, data: {trip: {id: trip.id}}})
             .success(function() {
                 
             });

@@ -1,4 +1,4 @@
-package com.yoouyi.dao.trip;
+package com.yoouyi.dao.user;
 
 import java.util.Date;
 

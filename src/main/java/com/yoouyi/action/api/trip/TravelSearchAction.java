@@ -1,4 +1,4 @@
-package com.yoouyi.action.api;
+package com.yoouyi.action.api.trip;
 
 import java.util.HashMap;
 import java.util.Map;
