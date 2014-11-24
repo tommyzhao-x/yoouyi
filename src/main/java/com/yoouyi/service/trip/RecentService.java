@@ -5,6 +5,6 @@ import com.yoouyi.security.CustomUserDetail;
 
 public interface RecentService {
     
-    public void add(RecentPO recentPO, CustomUserDetail user);
+    public boolean add(RecentPO recentPO, CustomUserDetail user);
 
 }

@@ -15,14 +15,21 @@ public class RecentServiceImpl implements RecentService {
 
     @Autowired
     private RecentDAO recentDAO;
-    
-    @Override
-    public void add(RecentPO recentPO, CustomUserDetail user) {
 
-        recentPO.setUserId(user.getId());
-        recentPO.setCreateDate(new Date());
+    @Override
+    public boolean add(RecentPO recentPO, CustomUserDetail user) {
+
+        boolean returnVal = false;
+
+        if (user != null) {
+
+            recentPO.setUserId(user.getId());
+            recentPO.setCreateDate(new Date());
+            recentDAO.save(recentPO);
+            returnVal = true;
+        }
         
-        recentDAO.save(recentPO);
+        return returnVal;
     }
 
 }
