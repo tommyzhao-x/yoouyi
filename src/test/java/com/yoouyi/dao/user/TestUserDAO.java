@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.yoouyi.BaseTestCase;
+import com.yoouyi.common.BaseTestCase;
 import com.yoouyi.common.Constants;
 import com.yoouyi.model.user.RolePO;
 import com.yoouyi.model.user.UserPO;

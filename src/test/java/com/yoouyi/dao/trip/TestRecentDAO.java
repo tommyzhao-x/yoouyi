@@ -6,7 +6,7 @@ import org.bson.types.ObjectId;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.yoouyi.BaseTestCase;
+import com.yoouyi.common.BaseTestCase;
 import com.yoouyi.model.trip.RecentPO;
 
 public class TestRecentDAO implements BaseTestCase {
@@ -31,7 +31,7 @@ public class TestRecentDAO implements BaseTestCase {
     public void testFindOne() {
         ObjectId o = new ObjectId("546dd870081884d01208e939");
         RecentPO recent = (RecentPO) recentDAO.findOne(o);
-        System.out.println(recent.getId());
+        System.out.println(recent.getTrip());
     }
 
 }

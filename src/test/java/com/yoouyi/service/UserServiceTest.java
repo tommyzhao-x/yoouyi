@@ -3,7 +3,7 @@ package com.yoouyi.service;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.yoouyi.BaseTestCase;
+import com.yoouyi.common.BaseTestCase;
 import com.yoouyi.common.Constants;
 import com.yoouyi.dao.user.RoleDAO;
 import com.yoouyi.model.user.UserPO;

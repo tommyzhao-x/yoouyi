@@ -5,7 +5,7 @@ import java.util.Date;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.yoouyi.BaseTestCase;
+import com.yoouyi.common.BaseTestCase;
 import com.yoouyi.dao.user.FavoriteDAO;
 import com.yoouyi.model.FavoritePO;
 

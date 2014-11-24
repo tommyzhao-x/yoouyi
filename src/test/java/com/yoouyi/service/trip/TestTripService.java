@@ -3,7 +3,7 @@ package com.yoouyi.service.trip;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.yoouyi.BaseTestCase;
+import com.yoouyi.common.BaseTestCase;
 import com.yoouyi.common.Pagination;
 import com.yoouyi.model.vo.TripSearchVO;
 

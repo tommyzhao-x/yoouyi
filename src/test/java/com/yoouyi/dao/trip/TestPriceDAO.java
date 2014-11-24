@@ -9,7 +9,7 @@ import org.bson.types.ObjectId;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.yoouyi.BaseTestCase;
+import com.yoouyi.common.BaseTestCase;
 import com.yoouyi.model.trip.PricePO;
 import com.yoouyi.model.trip.TripPO;
 import com.yoouyi.model.vo.TripSearchVO;
