@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.yoouyi.common.Pagination;
 import com.yoouyi.dao.trip.TripDAO;
+import com.yoouyi.model.trip.TripPO;
 import com.yoouyi.model.vo.TripSearchVO;
 import com.yoouyi.service.trip.TripService;
 
@@ -35,6 +36,11 @@ public class TripServiceImpl implements TripService {
     @Override
     public List<String> getAllTravelTimes(String starting, String destination, Date itinerary) {
         return tripDAO.getAllTravelTime(starting, destination, itinerary);
+    }
+
+    @Override
+    public void updateViewedTimes(TripPO trip) {
+        tripDAO.update(trip);
     }
 
 }

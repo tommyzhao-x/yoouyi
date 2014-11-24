@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import com.mongodb.BasicDBObject;
@@ -99,6 +100,12 @@ public class TripDAO {
         whereQuery.put("destination", destination);
         
         return whereQuery;
+    }
+
+    public void update(TripPO trip) {
+        Update update = new Update();
+        update.inc("viewed", 1);
+        mongoTemplate.updateFirst(Query.query(Criteria.where("id").is(trip.getId())), update, TripPO.class);
     }
 
 }
