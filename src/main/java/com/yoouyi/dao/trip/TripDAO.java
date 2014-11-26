@@ -102,9 +102,9 @@ public class TripDAO {
         return whereQuery;
     }
 
-    public void update(TripPO trip) {
+    public void update(TripPO trip, String key) {
         Update update = new Update();
-        update.inc("viewed", 1);
+        update.inc(key, 1);
         mongoTemplate.updateFirst(Query.query(Criteria.where("id").is(trip.getId())), update, TripPO.class);
     }
 

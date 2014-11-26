@@ -93,7 +93,7 @@
 
         function generateTravelLink() {
 
-            return 'index/' + [$scope.travelPage.starting, $scope.travelPage.destination, $scope.travelPage.travelWeb.travelTime,
+            return 'index/' + [$scope.travelPage.starting, $scope.travelPage.destination, $scope.travelPage.travelTime,
                 $scope.travelPage.selectedItinerary, $scope.travelPage.selectedPlatform, $scope.travelPage.selectedOrder].join('_');
         }
 

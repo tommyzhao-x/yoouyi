@@ -1,0 +1,62 @@
+.ly-trip {
+  padding: 5px;
+
+  .ly-trip-inner{
+    width: 100%;
+    border: 1px solid @color-border;
+    &:hover {
+      border: 1px solid @red;
+    }
+
+    &.ly-show-refer {
+      border: 1px solid @red;
+      .ly-trip-pic {
+        >.ly-trip-refer {
+          bottom: 0;
+        }
+      }
+    }
+
+    .ly-trip-pic {
+      position: relative;
+      height: 194px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      .ly-trip-refer {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        bottom: -30px;
+        background: #F40;
+        opacity: .8;
+        height: @height-common-line-height;
+        line-height: @height-common-line-height;
+
+        a{
+          color: @white;
+        }
+      }
+    }
+    .ly-trip-content {
+      margin: 6px 0;
+      padding: 0 10px;
+      .ly-trip-info {
+        .ly-trip-price {
+          color: @red;
+          font-family: verdana,arial;
+          font-size: 18px;
+        }
+      }
+      .ly-trip-title {
+        margin-top: 6px;
+        margin-bottom: 6px;
+        height: 34px;
+      }
+    }
+  }
+
+
+}

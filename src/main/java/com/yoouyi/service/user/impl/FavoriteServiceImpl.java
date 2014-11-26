@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.yoouyi.common.Pagination;
 import com.yoouyi.dao.user.FavoriteDAO;
 import com.yoouyi.model.FavoritePO;
+import com.yoouyi.model.trip.TripPO;
 import com.yoouyi.security.CustomUserDetail;
 import com.yoouyi.service.user.FavoriteService;
 
@@ -32,6 +33,11 @@ public class FavoriteServiceImpl implements FavoriteService {
         pagination.setItems(favoriteDAO.findAll(pageNum, customUserDetail.getId()));
         pagination.setSize(favoriteDAO.count(customUserDetail.getId()));
         return pagination;
+    }
+
+    @Override
+    public boolean isExist(TripPO trip, CustomUserDetail user) {
+        return favoriteDAO.isExist(trip, user);
     }
 
 }

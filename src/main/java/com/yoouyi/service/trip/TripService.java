@@ -15,4 +15,6 @@ public interface TripService {
     public List<String> getAllTravelPlatforms(String starting, String keyWord, Date departure);
 
     public void updateViewedTimes(TripPO trip);
+
+    public void updateFavoriteTime(TripPO trip);
 }

@@ -23,6 +23,7 @@
     <script src="resources/js/sys-web/app.js"></script>
     <script src="resources/js/sys-web/TravelWebController.js"></script>
     <script src="resources/js/sys-web/UserModalController.js"></script>
+    <script src="resources/js/sys-web/CommonDirective.js"></script>
 
     <script src="resources/js/sys-web/search/search.js"></script>
     <script src="resources/js/sys-web/search/SearchController.js"></script>

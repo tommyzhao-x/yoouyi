@@ -1,0 +1,155 @@
+body {
+  background-color: @color-bg;
+  font-size: @font-size-normal;
+  .panel-title {
+    font-size: @font-size-title;
+  }
+  .label {
+    margin: 0 2px;
+    padding: 3px 5px;
+    cursor: pointer;
+    font-weight: normal;
+    &.label-default {
+      background-color: #ccc;
+      color: #000;
+    }
+  }
+}
+
+.container {
+  width: 1170px !important;
+}
+
+.ly-left {
+  width: @width-left;
+}
+
+.ly-right {
+  width: @width - @width-left;
+}
+
+.title {
+  background-color: @white;
+  height: @height-title;
+  text-indent: 10px;
+  font-size: 16px;
+  padding: 10px 0;
+  border: 1px solid @color-border;
+}
+
+.header {
+  height: 90px;
+  padding: 10px 0;
+  background-color: @white;
+  .ly-city {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    .ly-cities {
+      width: 500px;
+      .label {
+        display: inline-block;
+      }
+    }
+  }
+  .ly-logo-container {
+    width: @width-left;
+    height: 100%;
+    float: left;
+    position: relative;
+    .logo {
+      height: 45px;
+      background: url(../images/logo.png) no-repeat center 0;
+    }
+    .slogan {
+      height: 25px;
+      background: url(../images/slogan.png) no-repeat center 0;
+    }
+  }
+  .ly-search-container {
+    margin-left: @width-left;
+    padding: 18px 0;
+    .ly-username {
+      width: 90%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      float: left;
+    }
+  }
+}
+
+.main {
+  padding-top: 10px;
+
+  .ly-left {
+    .ly-jingdian {
+      line-height: 30px;
+    }
+  }
+  .ly-right {
+    .ly-meta {
+      height: 120px;
+      .ly-meta-data {
+        width: 90px;
+      }
+      .row {
+        padding: 5px;
+      }
+    }
+    .ly-dashed {
+      border-top: 1px dashed @color-border;
+    }
+    .ly-line {
+      .thumbnail {
+        .ly-line-pic {
+          width: 249px;
+          height: 164px;
+        }
+        > .row {
+          padding: 10px 0;
+        }
+        &.show-refer{
+          .ly-line-refer {
+            bottom: 0;
+          }
+        }
+        .ly-line-refer {
+          position: relative;
+          bottom: -30px;
+          background: #F40;
+          opacity: .8;
+        }
+      }
+      .ly-line-img {
+        width: 249px;
+        height: 164px;
+      }
+      .ly-line-title {
+        height: 54px;
+      }
+      .ly-line-info {
+
+        font-size: @font-size-normal;
+        .ly-line-price {
+          color: @red;
+          font-size: @font-size-big;
+          font-weight: bold;
+        }
+        .ly-line-platform {
+          color: @color-gray;
+          font-size: @font-size-normal;
+        }
+        .ly-line-mark {
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  padding: 30px 0;
+  color: @white;
+  background-color: #333;
+  border-top: 1px solid @color-border;
+}

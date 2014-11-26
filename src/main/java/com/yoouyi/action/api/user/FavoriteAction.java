@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yoouyi.action.api.BasicAction;
 import com.yoouyi.common.MessageDTO;
 import com.yoouyi.model.FavoritePO;
+import com.yoouyi.service.trip.TripService;
 import com.yoouyi.service.user.FavoriteService;
 
 @RestController
@@ -19,6 +20,8 @@ public class FavoriteAction extends BasicAction {
 
     @Autowired
     private FavoriteService favoriteService;
+    @Autowired
+    private TripService tripService;
     
     @RequestMapping(method = RequestMethod.GET)
     public MessageDTO index(@RequestParam Integer pageNum) {
@@ -32,8 +35,15 @@ public class FavoriteAction extends BasicAction {
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public MessageDTO add(@RequestBody FavoritePO favoritePO) {
         MessageDTO message = new MessageDTO();
+        
+        if (!favoriteService.isExist(favoritePO.getTrip(), getUser())) {
+
+            tripService.updateFavoriteTime(favoritePO.getTrip());
+            
+        }
 
         message.setData(favoriteService.save(favoritePO, getUser()));
+        
         message.setSuccess(true);
 
         return message;

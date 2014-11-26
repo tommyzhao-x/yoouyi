@@ -156,7 +156,7 @@
                     pageInfo: function () {
                         return {
                             title: '登录',
-                            isLogin: true,
+                            isLogin: true  ,
                             username: username,
                             api: $scope.constants.api.signIn
                         };

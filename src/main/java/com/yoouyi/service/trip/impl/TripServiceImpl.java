@@ -40,7 +40,12 @@ public class TripServiceImpl implements TripService {
 
     @Override
     public void updateViewedTimes(TripPO trip) {
-        tripDAO.update(trip);
+        tripDAO.update(trip, "viewed");
+    }
+
+    @Override
+    public void updateFavoriteTime(TripPO trip) {
+        tripDAO.update(trip, "favorites");
     }
 
 }
