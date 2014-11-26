@@ -121,8 +121,15 @@
 //            $scope.travelWeb = data;
 //        });
 
-
+        $scope.onSearchEvent = function (event) {
+            if(event && event.keyCode == 13) {
+                $scope.searchTravel();
+            }
+        }
         $scope.searchTravel = function () {
+            console.log(event);
+
+
             $location.path($scope.generateTravelLink())
         };
 

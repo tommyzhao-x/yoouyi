@@ -90,7 +90,7 @@
                     <div class="col-xs-8">
                         <div class="input-group">
                             <input type="text" id="travelDestination" data-ng-model="travelWeb.destination"
-                                   name="destination" class="form-control">
+                                   data-ng-keydown="onSearchEvent($event)" name="destination" class="form-control">
                             <span class="input-group-btn">
                             <button type="button" data-ng-click="searchTravel()" id="travelSearchBtn" class="btn btn-primary">搜索线路</button>
                           </span>
