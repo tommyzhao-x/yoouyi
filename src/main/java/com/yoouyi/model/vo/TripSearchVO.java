@@ -9,7 +9,6 @@ public class TripSearchVO {
     private boolean order;
     private Integer pageNum;
     private String platform;
-    private Long tripTime;
 
     public String getDestination() {
         return destination;
@@ -57,14 +56,6 @@ public class TripSearchVO {
 
     public void setStarting(String starting) {
         this.starting = starting;
-    }
-
-    public Long getTripTime() {
-        return tripTime;
-    }
-
-    public void setTripTime(Long tripTime) {
-        this.tripTime = tripTime;
     }
 
 }

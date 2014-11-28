@@ -29,13 +29,12 @@
                var searchItems = $routeParams.searchItems.split('_');
                console.log(searchItems, _.size(searchItems));
 
-               if (_.size(searchItems) == 6) {
+               if (_.size(searchItems) == 5) {
                    $scope.travelPage.starting = searchItems[0];
                    $scope.travelPage.destination = searchItems[1];
-                   $scope.travelPage.tripTime = searchItems[2];
-                   $scope.travelPage.selectedItinerary = searchItems[3];
-                   $scope.travelPage.selectedPlatform = searchItems[4];
-                   $scope.travelPage.selectedOrder = searchItems[5];
+                   $scope.travelPage.selectedItinerary = searchItems[2];
+                   $scope.travelPage.selectedPlatform = searchItems[3];
+                   $scope.travelPage.selectedOrder = searchItems[4];
 //                   $rootScope.$broadcast('onSearchItems', generateParameters());
                }
                // load page data
@@ -134,10 +133,6 @@
                     order : !!$scope.travelPage.selectedOrder,
                     pageNum : $scope.travelPage.currentPage
                 }
-            
-            if ($scope.travelPage.tripTime) {
-                params.tripTime = $scope.travelPage.tripTime;
-            }
             
             return params;
         }
