@@ -44,7 +44,10 @@
             <div class="col-xs-4 ly-trip" data-ng-repeat="line in travelPage.lines">
                 <div class="ly-trip-inner">
                     <div class="ly-trip-pic" yy-show-refer >
-                        <img data-ng-src="{{line.imageLink}}" class="ly-line-img" alt="{{line.title}}">
+
+                        <a href="{{line.infoLink}}" target="_blank" data-ng-click="clickTripLink(line)">
+                            <img data-ng-src="{{line.imageLink}}" class="ly-line-img" alt="{{line.title}}">
+                        </a>
 
                         <div class="ly-trip-refer">
 
@@ -62,7 +65,7 @@
                         </div>
                         <div class="row ly-trip-title">
                             <div class="col-xs-12">
-                                <a href="{{line.infoLink}}" target="_blank">
+                                <a href="{{line.infoLink}}" target="_blank" data-ng-click="clickTripLink(line)">
                                     {{line.title | limitTo:40}}
                                 </a>
                             </div>

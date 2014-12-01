@@ -12,6 +12,7 @@
     <title>旅游比较</title>
     <link href="resources/css/bootstrap.css" rel="stylesheet">
 
+    <script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
 
     <script src="http://api.map.baidu.com/api?v=2.0&ak=T0vh70ZX0xIy8YfDQaBdzCAK"></script>
     <script src="resources/js/underscore-1.7.0/underscore-min.js"></script>
@@ -50,7 +51,7 @@
     <div class="container">
 
         <div class="top-ad">
-            <img src="resources/images/topad.jpg" width="1140" height="50" alt=""/>
+            <script type="text/javascript">BAIDU_CLB_fillSlot("1013169");</script>
         </div>
 
         <div class="header">
