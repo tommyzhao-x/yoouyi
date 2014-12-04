@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.yoouyi.common.Pagination;
 import com.yoouyi.dao.user.FavoriteDAO;
-import com.yoouyi.model.FavoritePO;
 import com.yoouyi.model.trip.TripPO;
+import com.yoouyi.model.user.FavoritePO;
 import com.yoouyi.security.CustomUserDetail;
 import com.yoouyi.service.user.FavoriteService;
 

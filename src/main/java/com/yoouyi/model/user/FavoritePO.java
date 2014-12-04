@@ -1,4 +1,4 @@
-package com.yoouyi.model;
+package com.yoouyi.model.user;
 
 import java.util.Date;
 
@@ -12,16 +12,16 @@ import com.yoouyi.model.trip.TripPO;
 @Document(collection = "c_favorite")
 public class FavoritePO {
     @Indexed
-    private ObjectId userId;
+    private String userId;
     @DBRef
     private TripPO trip;
     private Date createDate;
 
-    public ObjectId getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(ObjectId userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

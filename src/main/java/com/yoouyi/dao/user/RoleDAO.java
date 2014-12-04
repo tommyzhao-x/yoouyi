@@ -68,7 +68,7 @@ public class RoleDAO {
      * @param id
      * @return
      */
-    public boolean deleteRole(ObjectId id) {
+    public boolean deleteRole(String id) {
         RolePO role = new RolePO();
         role.setId(id);
         mongoTemplate.remove(role);

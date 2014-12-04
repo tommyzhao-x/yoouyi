@@ -26,7 +26,7 @@ public class RoleServiceImpl implements RoleService {
         return roleDAO.getRolesTotalNum();
     }
 
-    public boolean deleteRole(ObjectId id) {
+    public boolean deleteRole(String id) {
         return roleDAO.deleteRole(id);
     }
 

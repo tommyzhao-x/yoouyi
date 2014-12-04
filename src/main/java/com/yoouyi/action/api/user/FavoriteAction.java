@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.yoouyi.action.api.BasicAction;
 import com.yoouyi.common.MessageDTO;
-import com.yoouyi.model.FavoritePO;
+import com.yoouyi.model.user.FavoritePO;
 import com.yoouyi.service.trip.TripService;
 import com.yoouyi.service.user.FavoriteService;
 

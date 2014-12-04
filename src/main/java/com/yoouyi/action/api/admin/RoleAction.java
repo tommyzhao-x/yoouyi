@@ -88,7 +88,7 @@ public class RoleAction {
     /** delete */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public MessageDTO delete(@PathVariable ObjectId id) {
+    public MessageDTO delete(@PathVariable String id) {
 
         boolean success = roleService.deleteRole(id);
 

@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import com.yoouyi.common.BaseTestCase;
 import com.yoouyi.dao.user.FavoriteDAO;
-import com.yoouyi.model.FavoritePO;
+import com.yoouyi.model.user.FavoritePO;
 
 public class TestFavoriteDAO implements BaseTestCase {
 

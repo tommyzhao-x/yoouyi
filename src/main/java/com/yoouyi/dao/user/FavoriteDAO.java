@@ -12,8 +12,8 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import com.yoouyi.common.Constants;
-import com.yoouyi.model.FavoritePO;
 import com.yoouyi.model.trip.TripPO;
+import com.yoouyi.model.user.FavoritePO;
 import com.yoouyi.security.CustomUserDetail;
 
 @Repository("favoriteDAO")
@@ -30,12 +30,12 @@ public class FavoriteDAO {
         return favoritePO;
     }
 
-    public int count(ObjectId userId) {
+    public int count(String userId) {
         Long result = mongoTemplate.count(Query.query(Criteria.where("userId").is(userId)), FavoritePO.class);
         return result.intValue();
     }
 
-    public List<FavoritePO> findAll(Integer pageNum, ObjectId userId) {
+    public List<FavoritePO> findAll(Integer pageNum, String userId) {
         Criteria criteria = Criteria.where("userId").is(userId);
 
         Query query = new Query(criteria);

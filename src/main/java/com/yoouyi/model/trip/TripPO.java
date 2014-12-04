@@ -3,6 +3,7 @@ package com.yoouyi.model.trip;
 import java.util.Date;
 import java.util.List;
 
+import javax.enterprise.event.Observes;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -12,7 +13,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="tripInfo")
 public class TripPO {
-    private ObjectId id;
+
+    @Id
+    @GeneratedValue
+    private String id;
+
     private String infoId;
     private String title;
     private String subTitle;
@@ -34,13 +39,11 @@ public class TripPO {
     private String platform;
     private Date crawlTime;
 
-    @Id
-    @GeneratedValue
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 

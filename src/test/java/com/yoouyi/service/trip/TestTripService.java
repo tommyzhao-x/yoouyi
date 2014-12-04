@@ -22,7 +22,6 @@ public class TestTripService implements BaseTestCase{
         TripSearchVO searchVO = new TripSearchVO();
         searchVO.setStarting("上海");
         searchVO.setDestination("北京");
-        searchVO.setTripTime(1416499200000L);
         searchVO.setPageNum(1);
         Pagination pagination = tripService.findAll(searchVO);
         System.out.println(System.currentTimeMillis() - start);

@@ -16,7 +16,7 @@ public interface RoleService {
 
     public int countRolesTotalNum();
 
-    public boolean deleteRole(ObjectId id);
+    public boolean deleteRole(String id);
 
     public boolean addRole(RolePO role);
 

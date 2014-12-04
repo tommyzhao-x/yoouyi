@@ -14,16 +14,16 @@ public class PricePO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private ObjectId id;
+    private String id;
     private Double price;
-    private ObjectId tripId;
+    private String tripId;
     private Date crawlTime;
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -43,11 +43,11 @@ public class PricePO {
         this.crawlTime = crawlTime;
     }
 
-    public ObjectId getTripId() {
+    public String getTripId() {
         return tripId;
     }
 
-    public void setTripId(ObjectId tripId) {
+    public void setTripId(String tripId) {
         this.tripId = tripId;
     }
 

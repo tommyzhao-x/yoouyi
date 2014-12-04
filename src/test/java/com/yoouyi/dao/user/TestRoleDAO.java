@@ -24,7 +24,7 @@ public class TestRoleDAO implements BaseTestCase {
     public void testAdd() {
 
         RolePO role = new RolePO();
-        role.setName(Constants.ROLE_SYSTEM_ADMIN);
+        role.setName(Constants.ROLE_SUPER_ADMIN);
 
         roleDAO.addRole(role);
     }
@@ -50,8 +50,7 @@ public class TestRoleDAO implements BaseTestCase {
     
     @Test
     public void testDeleteRole() {
-        ObjectId id = new ObjectId("0");
-        boolean success = roleDAO.deleteRole(id);
+        boolean success = roleDAO.deleteRole("0");
         Assert.assertTrue(success);
     }
 

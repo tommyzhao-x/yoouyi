@@ -29,7 +29,7 @@ public class PriceDAO {
         return result;
     }
 
-    public List<PricePO> findAll(List<ObjectId> idList, String tripTime) {
+    public List<PricePO> findAll(List<String> idList, String tripTime) {
         Query query = Query.query(Criteria.where("tripId").in(idList).and("date").is(tripTime));
         
         query.with(new Sort(Sort.Direction.ASC, "price"));

@@ -34,9 +34,9 @@ public class TestTripDAO implements BaseTestCase {
         searchItem.setDestination("华山");
         ArrayList<TripPO> travelLinePOs = (ArrayList<TripPO>) tripDAO.findAll(searchItem);
         System.out.println(travelLinePOs.size());
-//        for (TravelInfo travelLinePO : travelLinePOs) {
-//            System.out.println(travelLinePO.getId());
-//        }
+        for (TripPO travelLinePO : travelLinePOs) {
+            System.out.println(travelLinePO.getId());
+        }
     }
     
     @Test

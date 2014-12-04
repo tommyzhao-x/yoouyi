@@ -13,16 +13,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "c_recent")
 public class RecentPO {
     
-    private ObjectId userId;
+    private String userId;
     @DBRef
     private TripPO trip;
     private Date createDate;
 
-    public ObjectId getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(ObjectId userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

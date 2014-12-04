@@ -37,7 +37,7 @@ public class TestPriceDAO implements BaseTestCase {
         System.out.println(travelLinePOs.size());
 
         System.out.println(System.currentTimeMillis() - start);
-        List<ObjectId> idList = new ArrayList<ObjectId>();
+        List<String> idList = new ArrayList<String>();
         
         for (TripPO tripPO : travelLinePOs) {
             idList.add(tripPO.getId());

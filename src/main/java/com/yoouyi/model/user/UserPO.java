@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class UserPO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private ObjectId id;
+    private String id;
     
     private String username;
     private String password;
@@ -27,11 +27,11 @@ public class UserPO {
 
     private boolean enable = true;
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 

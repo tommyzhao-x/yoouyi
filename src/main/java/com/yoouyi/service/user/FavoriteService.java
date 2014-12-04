@@ -1,8 +1,8 @@
 package com.yoouyi.service.user;
 
 import com.yoouyi.common.Pagination;
-import com.yoouyi.model.FavoritePO;
 import com.yoouyi.model.trip.TripPO;
+import com.yoouyi.model.user.FavoritePO;
 import com.yoouyi.security.CustomUserDetail;
 
 public interface FavoriteService {
