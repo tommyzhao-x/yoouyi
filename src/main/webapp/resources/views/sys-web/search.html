@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-xs-10" id="platformList">
                             <span class="label {{ travelPage.selectedPlatform == platform ? 'label-primary' : 'label-default' }}"
-                                  data-ng-click="selectMetaData({platform: platform})" data-ng-repeat="platform in travelPage.platformList">{{platform}}</span>
+                                  data-ng-click="selectMetaData({platform: platform})" data-ng-repeat="platform in travelPage.platformList"> {{ showPlatform(platform) }} </span>
                 </div>
             </div>
             <div class="row">
@@ -53,7 +53,7 @@
 
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <a  data-ng-href="index/{{ travelPage.starting }}_{{ travelPage.destination }}_{{ travelPage.travelWeb.travelTime}}_{{line.port}}__">查看相似路线</a>
+                                    <a  data-ng-href="index/{{ travelPage.starting }}_{{ travelPage.destination }}_{{line.port}}__">查看相似路线</a>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                     <div class="row ly-trip-content">
                         <div class="row ly-trip-info">
                             <div class="col-xs-6 text-left ly-trip-price">￥{{line.price}}元</div>
-                            <div class="col-xs-6 text-right ly-trip-platform">{{line.platform}}</div>
+                            <div class="col-xs-6 text-right ly-trip-platform">{{ showPlatform(line.platform) }}</div>
                         </div>
                         <div class="row ly-trip-title">
                             <div class="col-xs-12">

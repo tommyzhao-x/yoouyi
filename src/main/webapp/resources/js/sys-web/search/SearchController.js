@@ -9,7 +9,14 @@
             apiMetaData: 'api/travelSearch/metaData',
             apiRecent: 'api/recent',
             itineraryList: ['不限'],
-            platformList: ['不限']
+            platformList: ['不限'],
+            platformObject: {
+                '不限': '不限',
+                'TUNIU': '途牛',
+                'SPRING': '春秋旅游',
+                'QUNAR': '去哪儿',
+                'CNCN': '欣欣旅游',
+                'TONGCHENG': '同城'}
         };
 
         $scope.travelPage = {
@@ -60,7 +67,10 @@
             $location.path(generateTravelLink());
 
         };
-
+        
+        $scope.showPlatform = function (platform) {
+            return $scope.travel.platformObject[platform];
+        };
 
         $scope.pageChanged = function() {
             getTravel()
@@ -86,13 +96,9 @@
             });
         };
 
-        function getUserCityByIp() {
-
-        }
-
         function generateTravelLink() {
 
-            return 'index/' + [$scope.travelPage.starting, $scope.travelPage.destination, $scope.travelPage.travelTime,
+            return 'index/' + [$scope.travelPage.starting, $scope.travelPage.destination,
                 $scope.travelPage.selectedItinerary, $scope.travelPage.selectedPlatform, $scope.travelPage.selectedOrder].join('_');
         }
 
