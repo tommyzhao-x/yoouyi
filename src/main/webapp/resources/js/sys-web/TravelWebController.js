@@ -20,9 +20,10 @@
                 checkSession: 'login/checkSession',
                 logout: 'login/signOut',
                 signUp: 'api/user/signUp',
-                signIn: 'login/signIn'
+                signIn: 'login/signIn',
+                recentView: 'api/trip/recent'
             },
-            cities: [{city: '北京', id: 131}, {city: '天津', id: 332},
+            cities: [{city: '北京', id: 131, show: true}, {city: '天津', id: 332},
                      {city: '石家庄', id: 150}, {city: '唐山', id: 265}, {city: '秦皇岛', id: 148}, {city: '邯郸', id: 151}, {city: '邢台', id: 266},
                      {city: '保定', id: 307}, {city: '张家口', id: 264}, {city: '承德', id: 207}, {city: '沧州', id: 149}, {city: '廊坊', id: 191},
                      {city: '衡水', id: 208}, {city: '太原', id: 176}, {city: '大同', id: 355}, {city: '阳泉', id: 357}, {city: '长治', id: 356},
@@ -37,7 +38,7 @@
                      {city: '白城', id: 51}, {city: '延边朝鲜族自治州', id: 54}, {city: '哈尔滨', id: 48}, {city: '齐齐哈尔', id: 41}, {city: '鸡西', id: 46},
                      {city: '鹤岗', id: 43}, {city: '双鸭山', id: 45}, {city: '大庆', id: 50}, {city: '伊春', id: 40}, {city: '佳木斯', id: 42},
                      {city: '七台河', id: 47}, {city: '牡丹江', id: 49}, {city: '黑河', id: 39}, {city: '绥化', id: 44}, {city: '大兴安岭地区', id: 38},
-                     {city: '上海', id: 289}, {city: '南京', id: 315}, {city: '无锡', id: 317}, {city: '徐州', id: 316}, {city: '常州', id: 348},
+                     {city: '上海', id: 289, show: true}, {city: '南京', id: 315}, {city: '无锡', id: 317}, {city: '徐州', id: 316}, {city: '常州', id: 348},
                      {city: '苏州', id: 224}, {city: '南通', id: 161}, {city: '连云港', id: 347}, {city: '淮安', id: 162}, {city: '盐城', id: 223},
                      {city: '扬州', id: 346}, {city: '镇江', id: 160}, {city: '泰州', id: 276}, {city: '宿迁', id: 277}, {city: '杭州', id: 179},
                      {city: '宁波', id: 180}, {city: '温州', id: 178}, {city: '嘉兴', id: 334}, {city: '湖州', id: 294}, {city: '绍兴', id: 293},
@@ -114,6 +115,8 @@
             getUserLocationByIp();
             
             checkLogin();
+            
+            getUserRecentView();
 
         }) ();
         
@@ -172,6 +175,7 @@
 
             modalInstance.result.then(function (data) {
                 $scope.travelWeb.userInfo = data;
+                $scope.loadUserRecentView();
             });
         };
 
@@ -212,6 +216,19 @@
             console.log('open datepicker');
             $scope.travelWeb.datePickerStatus = true;
         };
+        
+        $scope.loadUserRecentView = function() {
+            getUserRecentView();
+        };
+        
+        function getUserRecentView() {
+            $http({method: 'get', url: $scope.constants.api.recentView})
+            .success(function(result, status) {
+                if (result.success) {
+                    $scope.travelWeb.recentList = result.data;
+                }
+            })
+        }
         
         function checkLogin() {
             $http({method: 'get', url: $scope.constants.api.checkSession})

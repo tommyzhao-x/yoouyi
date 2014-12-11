@@ -16,7 +16,9 @@
                 'SPRING': '春秋旅游',
                 'QUNAR': '去哪儿',
                 'CNCN': '欣欣旅游',
-                'TONGCHENG': '同城'}
+                'TONGCHENG': '同城',
+                "UZAI": '悠哉', 
+                "CTRIP": '携程'}
         };
 
         $scope.travelPage = {
@@ -92,7 +94,8 @@
             console.log(trip);
             $http({method: 'post', url: $scope.travel.apiRecent, data: {trip: {id: trip.id}}})
             .success(function() {
-                
+                // refresh recent list
+                $scope.loadUserRecentView();
             });
         };
 

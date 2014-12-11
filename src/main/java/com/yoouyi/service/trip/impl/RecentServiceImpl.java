@@ -1,6 +1,7 @@
 package com.yoouyi.service.trip.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,18 @@ public class RecentServiceImpl implements RecentService {
         }
         
         return returnVal;
+    }
+
+    @Override
+    public List<RecentPO> findAll(CustomUserDetail user) {
+        
+        List<RecentPO> result = null;
+        
+        if (user != null) {
+            result = recentDAO.findAll(user.getId());
+        }
+        
+        return result;
     }
 
 }

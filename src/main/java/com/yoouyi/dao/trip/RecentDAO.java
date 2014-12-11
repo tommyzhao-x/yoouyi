@@ -1,7 +1,10 @@
 package com.yoouyi.dao.trip;
 
+import java.util.List;
+
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -27,6 +30,15 @@ public class RecentDAO {
                 Update.update("createDate", recentVO.getCreateDate()), RecentPO.class);
         
         return recentVO;
+    }
+
+
+    public List<RecentPO> findAll(String userId) {
+        Query query = Query.query(Criteria.where("userId").is(userId)).limit(10);
+        
+        query.with(new Sort(Sort.Direction.DESC, "createDate"));
+        
+        return mongoTemplate.find(query, RecentPO.class);
     }
 
 }

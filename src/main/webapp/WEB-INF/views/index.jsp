@@ -66,7 +66,7 @@
                         </span>
                     <div class="dropdown-menu ly-cities" role="menu" aria-labelledby="dropdownMenu1">
                         <span class="label {{ travelWeb.selectedCity.id == city.id ? 'label-primary' : 'label-default' }}" 
-                        data-ng-click="changeCity(city)" data-ng-repeat="city in constants.cities">{{ city.city }}</span>
+                        data-ng-click="changeCity(city)" data-ng-if="city.show" data-ng-repeat="city in constants.cities">{{ city.city }}</span>
                     </div>
                     <div id="amap-container"></div>
                 </div>
@@ -127,40 +127,12 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">北京旅游景点</h3>
+                    <h3 class="panel-title">最近浏览</h3>
                 </div>
                 <div class="panel-body ly-jingdian">
-                    <span class="label label-primary">
-                        <a href="index/八达岭">八达岭</a>
-                    </span>
-                        <span class="label label-primary">
-                            <a href="index/list2">北海</a>
-                        </span>
-                    <span class="label label-primary">天坛</span>
-                    <span class="label label-primary">故宫</span>
-                    <span class="label label-primary">天安门</span>
-                    <span class="label label-primary">颐和园</span>
-                    <span class="label label-primary">坤宁宫</span>
-                    <span class="label label-primary">同仁堂</span>
-                    <span class="label label-primary">卢沟桥</span>
-                    <span class="label label-primary">大宅门</span>
-                    <span class="label label-primary">大栅栏</span>
-                    <span class="label label-primary">故宫</span>
-                    <span class="label label-primary">天安门</span>
-                    <span class="label label-primary">颐和园</span>
-                    <span class="label label-primary">坤宁宫</span>
-                    <span class="label label-primary">同仁堂</span>
-                    <span class="label label-primary">卢沟桥</span>
-                    <span class="label label-primary">大宅门</span>
-                    <span class="label label-primary">大栅栏</span>
-                    <span class="label label-primary">故宫</span>
-                    <span class="label label-primary">天安门</span>
-                    <span class="label label-primary">颐和园</span>
-                    <span class="label label-primary">坤宁宫</span>
-                    <span class="label label-primary">同仁堂</span>
-                    <span class="label label-primary">卢沟桥</span>
-                    <span class="label label-primary">大宅门</span>
-                    <span class="label label-primary">大栅栏</span>
+                    <ul>
+                    	<li data-ng-repeat="recent in travelWeb.recentList">{{ recent.trip.title }}</li>
+                    </ul>
                 </div>
             </div>
 
