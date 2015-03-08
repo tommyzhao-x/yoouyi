@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>旅游比较</title>
+    <title>游易网 </title>
     <link href="resources/css/bootstrap.css" rel="stylesheet">
 
     <script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>

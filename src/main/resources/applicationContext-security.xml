@@ -28,7 +28,7 @@
         <intercept-url pattern="/main"
             access="ROLE_SYSTEM_ADMIN, ROLE_SUPER_ADMIN" />
         <!-- other page only super admin user manager zone -->
-        <intercept-url pattern="/**" access="ROLE_SUPER_ADMIN" />
+        <!-- intercept-url pattern="/**" access="ROLE_SUPER_ADMIN" /  -->
 
         <form-login login-page="/login/index"
             username-parameter="username" password-parameter="password"
