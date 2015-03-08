@@ -114,6 +114,20 @@
 
     <div class="row main">
         <div class="col-xs-2 ly-left">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">热门目的地</h3>
+                </div>
+                <div class="panel-body ly_hot_panel">
+                    <span class="ly_hot" data-ng-if="hot != travelWeb.starting" data-ng-repeat="hot in constants.hotDestination">
+                        <a data-ng-href="index/{{ travelWeb.starting }}_{{ hot }}___">
+                            {{ hot }}
+                        </a>
+                    </span>
+                </div>
+            </div>
+
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">旅游线路推荐</h3>
@@ -130,8 +144,8 @@
                     <h3 class="panel-title">最近浏览</h3>
                 </div>
                 <div class="panel-body ly-jingdian">
-                    <ul>
-                    	<li data-ng-repeat="recent in travelWeb.recentList">{{ recent.trip.title }}</li>
+                    <ul class="ly_recent_ul">
+                    	<li class="ly_recent_line" data-ng-repeat="recent in travelWeb.recentList">{{ recent.trip.title }}</li>
                     </ul>
                 </div>
             </div>
