@@ -22,7 +22,10 @@
         function showUserFavorites() {
             $http({method: 'get', url: $scope.memberFavorite.api.list, params: {pageNum: $scope.favoritePage.currentPage}})
             .success(function(result) {
-                $scope.favoritePage.items = result.data.items;
+                $scope.favoritePage.items = angular.forEach(result.data.items, function(item, key) {
+                    item.createTime = new Date(item.createDate).getTime();
+                });
+                    console.log( $scope.favoritePage.items)
             });
         }
 

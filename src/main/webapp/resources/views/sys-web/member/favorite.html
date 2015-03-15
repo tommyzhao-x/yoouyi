@@ -37,11 +37,11 @@
                             </div>
                         </div>
                         <div class="row ly-trip-info">
-                            <div class="col-xs-6 text-left">
+                            <div class="col-xs-6 text-left ly-favorite-day">
                                 <span data-ng-if="item.trip.port">{{item.trip.port}}天行程</span>
                             </div>
-                            <div class="col-xs-6 text-right">
-                                <span>收藏时间: {{ item.createDate| date : 'yyyy-MM-dd HH:mm:ss'}}</span>
+                            <div class="col-xs-6 text-right ly-favorite-date">
+                                <span>收藏时间: {{ item.createTime| date : 'yyyy-MM-dd HH:mm:ss'}}</span>
                             </div>
                         </div>
                     </div>
