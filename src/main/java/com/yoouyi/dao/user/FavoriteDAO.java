@@ -25,7 +25,7 @@ public class FavoriteDAO {
     public FavoritePO save(FavoritePO favoritePO) {
 
         mongoTemplate.upsert(Query.query(Criteria.where("userId").is(favoritePO.getUserId()).and("trip").is(favoritePO.getTrip())),
-                Update.update("createDate", favoritePO.getCreateDate()), FavoritePO.class);
+                Update.update("trip", favoritePO.getTrip()).set("createDate", favoritePO.getCreateDate()), FavoritePO.class);
 
         return favoritePO;
     }

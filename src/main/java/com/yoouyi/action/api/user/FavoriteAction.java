@@ -35,15 +35,9 @@ public class FavoriteAction extends BasicAction {
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public MessageDTO add(@RequestBody FavoritePO favoritePO) {
         MessageDTO message = new MessageDTO();
-        
-        if (!favoriteService.isExist(favoritePO.getTrip(), getUser())) {
-
-            tripService.updateFavoriteTime(favoritePO.getTrip());
-            
-        }
 
         message.setData(favoriteService.save(favoritePO, getUser()));
-        
+
         message.setSuccess(true);
 
         return message;
