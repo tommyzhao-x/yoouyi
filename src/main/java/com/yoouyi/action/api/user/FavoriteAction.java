@@ -43,4 +43,15 @@ public class FavoriteAction extends BasicAction {
         return message;
     }
 
+    @RequestMapping(value = "/delete", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public MessageDTO delete(@RequestBody FavoritePO favoritePO) {
+        MessageDTO message = new MessageDTO();
+
+        favoriteService.delete(favoritePO);
+
+        message.setSuccess(true);
+
+        return message;
+    }
+
 }

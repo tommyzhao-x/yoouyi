@@ -55,4 +55,8 @@ public class FavoriteDAO {
         return tripPO != null;
     }
 
+    public boolean delete(FavoritePO favoritePO) {
+        mongoTemplate.remove(favoritePO);
+        return true;
+    }
 }

@@ -40,4 +40,9 @@ public class FavoriteServiceImpl implements FavoriteService {
         return favoriteDAO.isExist(trip, user);
     }
 
+    @Override
+    public boolean delete(FavoritePO favoritePO) {
+        return favoriteDAO.delete(favoritePO);
+    }
+
 }

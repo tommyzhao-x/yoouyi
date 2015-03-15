@@ -1,17 +1,14 @@
 package com.yoouyi.model.user;
 
-import java.util.Date;
-
-import org.bson.types.ObjectId;
+import com.yoouyi.model.trip.TripPO;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.yoouyi.model.trip.TripPO;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Document(collection = "c_favorite")
 public class FavoritePO {

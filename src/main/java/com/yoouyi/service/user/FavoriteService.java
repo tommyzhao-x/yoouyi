@@ -13,4 +13,6 @@ public interface FavoriteService {
 
     public boolean isExist(TripPO trip, CustomUserDetail user);
 
+    public boolean delete(FavoritePO favoritePO);
+
 }
