@@ -81,7 +81,6 @@
                 $scope.signIn();
                 return;
             }
-            console.log(travel, $scope.travelWeb.userInfo);
             $http({method: 'post', url: $scope.travel.apiFavorite, data: {trip: {id: travel.id}}})
             .success(function() {
                 
@@ -89,7 +88,6 @@
         };
         
         $scope.clickTripLink = function(trip) {
-            console.log(trip);
             $http({method: 'post', url: $scope.travel.apiRecent, data: {trip: {id: trip.id}}})
             .success(function() {
                 // refresh recent list
@@ -113,7 +111,6 @@
                     $scope.travelPage.lines = data.lines.items;
                 })
                 .error(function(data, status) {
-                    console.log(data, status);
                 });
         }
 
@@ -127,7 +124,6 @@
                     $scope.travelPage.platformList = $scope.travel.platformList.concat(data.platformList);
                 })
                 .error(function(data, status) {
-                    console.log(data, status);
                 });
         }
 

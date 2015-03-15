@@ -129,7 +129,12 @@
         }) ();
         
         $scope.$on('onSearchItems', function (event, data) {
-            $scope.travelWeb = data;
+            $scope.travelWeb.destination = data.destination;
+            $scope.travelWeb.itinerary = data.itinerary;
+            $scope.travelWeb.order = data.order;
+            $scope.travelWeb.pageNum = data.pageNum;
+            $scope.travelWeb.platform = data.platform;
+            $scope.travelWeb.starting = data.starting;
         });
 
         $scope.onSearchEvent = function (event) {
@@ -142,8 +147,6 @@
         };
 
         function generateTravelLink() {
-            console.log('test',$scope.travelWeb);
-
             return 'index/' + [$scope.travelWeb.starting, $scope.travelWeb.destination,
                 $scope.travelWeb.selectedItinerary, $scope.travelWeb.selectedPlatform, $scope.travelWeb.selectedOrder].join('_');
         };
@@ -162,8 +165,6 @@
         };
 
         $scope.signIn = function (username) {
-
-            console.log('sign in');
             var modalInstance = $modal.open({
                 templateUrl: 'resources/views/sys-web/UserModal.html',
                 controller: 'UserModalController',
@@ -186,8 +187,6 @@
         };
 
         $scope.signUp = function () {
-
-            console.log('sign in');
             var modalInstance = $modal.open({
                 templateUrl: 'resources/views/sys-web/UserModal.html',
                 controller: 'UserModalController',
@@ -219,7 +218,6 @@
         };
         
         $scope.openDatePicker = function () {
-            console.log('open datepicker');
             $scope.travelWeb.datePickerStatus = true;
         };
         
@@ -252,7 +250,6 @@
                 
                 var myCity = new BMap.LocalCity();
                 myCity.get(function (result) {
-                    console.log(result);
 
                     localStorage.setItem('cityCode', result.code);
 
@@ -263,7 +260,6 @@
                 });
 
             } else {
-                console.log(cityCode);
                 $scope.travelWeb.selectedCity = _.findWhere($scope.constants.cities, {id: Number(cityCode)});
                 $scope.travelWeb.starting = $scope.travelWeb.selectedCity.city;
             }

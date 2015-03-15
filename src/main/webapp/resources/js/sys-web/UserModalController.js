@@ -16,8 +16,6 @@ angular.module('travelWeb').controller('UserModalController', ['$scope', '$modal
     }
 
     $scope.ok = function () {
-        console.log($scope.user, !$scope.user.username);
-
         if (!$scope.user.username) {
             $scope.pageError.invalidUsername = true;
         } else {
