@@ -1,51 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <b:beans xmlns="http://www.springframework.org/schema/security"
-    xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
     <global-method-security pre-post-annotations="enabled">
-        <expression-handler ref="expressionHandler" />
+        <expression-handler ref="expressionHandler"/>
     </global-method-security>
 
     <http realm="Contacts Realm">
-        <intercept-url pattern="/resources/**"
-            access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <intercept-url pattern="/index/**"
-            access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <intercept-url pattern="/search/**"
-            access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <intercept-url pattern="/travelSearch/**"
-            access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <intercept-url pattern="/api/**"
-            access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <intercept-url pattern="/login/**"
-            access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/*.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/index/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/search/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/travelSearch/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/api/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/login/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <!-- /member: normal user manager zone -->
-        <intercept-url pattern="/member/**"
-            access="ROLE_SYSTEM_USER, ROLE_SYSTEM_ADMIN" />
+        <intercept-url pattern="/member/**" access="ROLE_SYSTEM_USER, ROLE_SYSTEM_ADMIN"/>
         <!-- /main: system admin user manager zone -->
-        <intercept-url pattern="/main"
-            access="ROLE_SYSTEM_ADMIN, ROLE_SUPER_ADMIN" />
+        <intercept-url pattern="/main" access="ROLE_SYSTEM_ADMIN, ROLE_SUPER_ADMIN"/>
         <!-- other page only super admin user manager zone -->
-        <!-- intercept-url pattern="/**" access="ROLE_SUPER_ADMIN" /  -->
+        <intercept-url pattern="/**" access="ROLE_SUPER_ADMIN" />
 
         <form-login login-page="/login/index"
-            username-parameter="username" password-parameter="password"
-            login-processing-url="/login/signIn" default-target-url="/login/success"
-            always-use-default-target="true" authentication-failure-url="/login/failed" />
-        <http-basic />
+                    username-parameter="username" password-parameter="password"
+                    login-processing-url="/login/signIn" default-target-url="/login/success"
+                    always-use-default-target="true" authentication-failure-url="/login/failed"/>
+        <http-basic/>
         <logout logout-url="/login/signOut" logout-success-url="/login/logout"
-            invalidate-session="true" />
-        <remember-me />
-        <headers />
+                invalidate-session="true"/>
+        <remember-me/>
+        <headers/>
         <!-- csrf / -->
         <!-- custom-filter ref="switchUserProcessingFilter" position="SWITCH_USER_FILTER" 
             / -->
     </http>
 
     <b:bean id="passwordEncoder"
-        class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"></b:bean>
+            class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"></b:bean>
 
     <authentication-manager alias="MyAuthenticationManager">
         <authentication-provider ref="authenticationProvider">
@@ -53,23 +46,23 @@
     </authentication-manager>
 
     <b:bean id="authenticationProvider"
-        class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
-        <b:property name="userDetailsService" ref="customUserDetailsService" />
+            class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <b:property name="userDetailsService" ref="customUserDetailsService"/>
         <!-- turn on user not found exctipeion -->
-        <b:property name="hideUserNotFoundExceptions" value="false" />
-        <b:property name="passwordEncoder" ref="passwordEncoder" />
+        <b:property name="hideUserNotFoundExceptions" value="false"/>
+        <b:property name="passwordEncoder" ref="passwordEncoder"/>
     </b:bean>
 
     <b:bean
-        class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+            class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <b:property name="messageConverters">
             <b:list>
-                <b:ref bean="jsonHttpMessageConverter" />
+                <b:ref bean="jsonHttpMessageConverter"/>
             </b:list>
         </b:property>
     </b:bean>
     <b:bean id="jsonHttpMessageConverter"
-        class="org.springframework.http.converter.json.GsonHttpMessageConverter">
+            class="org.springframework.http.converter.json.GsonHttpMessageConverter">
         <b:property name="supportedMediaTypes">
             <b:list>
                 <b:value>application/json;charset=UTF-8</b:value>

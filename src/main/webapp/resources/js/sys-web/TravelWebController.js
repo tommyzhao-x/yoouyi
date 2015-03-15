@@ -104,14 +104,14 @@
             hotDestination: [ '三亚',  '亚龙湾', '海口', '丽江', '大理', '厦门',
                 '鼓浪屿', '武夷山', '九寨沟', '成都', '峨眉山', '桂林', '北海', '青岛', '泰山', '济南', '日照',
                 '威海', '黄果树', '拉萨', '布达拉宫', '日喀则', '敦煌', '长白山', '华山', '西安', '乌镇', '西塘',
-                '黄山', '杭州', '上海', '扬州', '周庄', '张家界', '武当山', '神农架', '三峡', '庐山', '北京', '香格里拉', '西双版纳']
+                '黄山', '杭州', '上海', '扬州', '周庄', '张家界', '武当山', '神农架', '三峡', '庐山', '北京', '香格里拉', '西双版纳'],
+            hotOutDestination: ['马尔代夫', '普吉岛', '巴厘岛', '塞班', '长滩岛', '毛里求斯', '塞舌尔', '关岛', '苏梅岛', '大溪地', '济州岛', '夏威夷', '斐济', '民丹岛', '香港', '澳门', '台湾', '新加坡', '吉隆坡', '首尔', '东京', '曼谷', '洛杉矶', '巴黎', '迪拜', '伦敦', '韩国', '泰国', '柬埔寨', '马来西亚', '日本', '澳大利亚', '新西兰', '美国', '加拿大', '墨西哥', '意大利', '法国', '德国', '瑞士', '匈牙利', '西班牙', '英国', '希腊', '奥地利', '荷兰', '丹麦', '土耳其', '肯尼亚', '南非']
         
         };
 
         $scope.travelWeb = {
                 datePickerStatus: false,
                 userInfo: {}
-
         };
 
         (function init() {
@@ -122,11 +122,15 @@
             
             getUserRecentView();
 
+            if ($location.path() == '/index' ) {
+                $scope.travelWeb.destination = "丽江";
+                $location.path(generateTravelLink());
+            }
         }) ();
         
-//        $scope.$on('onSearchItems', function (event, data) {
-//            $scope.travelWeb = data;
-//        });
+        $scope.$on('onSearchItems', function (event, data) {
+            $scope.travelWeb = data;
+        });
 
         $scope.onSearchEvent = function (event) {
             if(event && event.keyCode == 13) {
@@ -134,13 +138,11 @@
             }
         }
         $scope.searchTravel = function () {
-            console.log(event);
-
-
-            $location.path($scope.generateTravelLink())
+            $location.path(generateTravelLink())
         };
 
-        $scope.generateTravelLink = function () {
+        function generateTravelLink() {
+            console.log('test',$scope.travelWeb);
 
             return 'index/' + [$scope.travelWeb.starting, $scope.travelWeb.destination,
                 $scope.travelWeb.selectedItinerary, $scope.travelWeb.selectedPlatform, $scope.travelWeb.selectedOrder].join('_');

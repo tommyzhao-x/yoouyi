@@ -32,11 +32,9 @@
         
         (function init() {
             $scope.parentlog();
-            console.log('travelWebSearch', $routeParams);
             // split all search item
            if ($routeParams.searchItems) {
                var searchItems = $routeParams.searchItems.split('_');
-               console.log(searchItems, _.size(searchItems));
 
                if (_.size(searchItems) == 5) {
                    $scope.travelPage.starting = searchItems[0];
@@ -44,7 +42,7 @@
                    $scope.travelPage.selectedItinerary = searchItems[2];
                    $scope.travelPage.selectedPlatform = searchItems[3];
                    $scope.travelPage.selectedOrder = searchItems[4];
-//                   $rootScope.$broadcast('onSearchItems', generateParameters());
+                   $rootScope.$broadcast('onSearchItems', generateParameters());
                }
                // load page data
                getTravel();

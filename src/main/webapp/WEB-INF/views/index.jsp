@@ -10,6 +10,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>游易网 </title>
+    <meta name="keywords" content="游易网,{{travelWeb.starting}},{{travelWeb.starting}}旅游,{{travelWeb.starting}}旅游线路" />
+    <meta name="description" content="游易网让旅游变得更容易,{{travelWeb.starting}}旅游大全,{{travelWeb.starting}}旅游线路大全,{{travelWeb.starting}}旅游线路优惠信息" />
+
     <link href="resources/css/bootstrap.css" rel="stylesheet">
 
     <script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
@@ -130,6 +133,19 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
+                    <h3 class="panel-title">热门国外目的地</h3>
+                </div>
+                <div class="panel-body ly_hot_panel">
+                    <span class="ly_hot" data-ng-if="hot != travelWeb.starting" data-ng-repeat="hot in constants.hotOutDestination">
+                        <a data-ng-href="index/{{ travelWeb.starting }}_{{ hot }}___">
+                            {{ hot }}
+                        </a>
+                    </span>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
                     <h3 class="panel-title">旅游线路推荐</h3>
                 </div>
                 <div class="panel-body ly-tuijian">
@@ -162,6 +178,15 @@
     <p class="text-center">Copyright &copy; 2014 游易 版权所有</p>
 </footer>
 
-
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?d37b0cb4199dd4829323d743514708f7";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 </body>
 </html>
+
