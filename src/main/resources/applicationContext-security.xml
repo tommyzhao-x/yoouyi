@@ -53,21 +53,4 @@
         <b:property name="passwordEncoder" ref="passwordEncoder"/>
     </b:bean>
 
-    <b:bean
-            class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-        <b:property name="messageConverters">
-            <b:list>
-                <b:ref bean="jsonHttpMessageConverter"/>
-            </b:list>
-        </b:property>
-    </b:bean>
-    <b:bean id="jsonHttpMessageConverter"
-            class="org.springframework.http.converter.json.GsonHttpMessageConverter">
-        <b:property name="supportedMediaTypes">
-            <b:list>
-                <b:value>application/json;charset=UTF-8</b:value>
-            </b:list>
-        </b:property>
-    </b:bean>
-
 </b:beans>

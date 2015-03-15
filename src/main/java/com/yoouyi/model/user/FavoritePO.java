@@ -24,6 +24,7 @@ public class FavoritePO {
     private String userId;
     @DBRef
     private TripPO trip;
+
     private Date createDate;
 
     public String getId() {
