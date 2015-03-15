@@ -13,7 +13,7 @@
     <meta name="keywords" content="游易网,{{travelWeb.starting}},{{travelWeb.starting}}旅游,{{travelWeb.starting}}旅游线路" />
     <meta name="description" content="游易网让旅游变得更容易,{{travelWeb.starting}}旅游大全,{{travelWeb.starting}}旅游线路大全,{{travelWeb.starting}}旅游线路优惠信息" />
 
-    <link href="resources/css/bootstrap.css" rel="stylesheet">
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 
     <script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
 
@@ -38,7 +38,6 @@
 
 
     <script src="resources/js/jquery-1.11.1.min.js"></script>
-    <script src="resources/js/jsrender.1.0.0-beta/jsrender.js"></script>
 
     <!--script src="resources/js/sys-web/search.js"></script-->
 
